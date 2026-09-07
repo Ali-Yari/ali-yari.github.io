@@ -3,11 +3,874 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ali Yari</title>
+
+    <title>Ali Yari | AI & Information Systems Researcher</title>
+
+    <meta name="description"
+          content="Ali Yari — Researcher in Artificial Intelligence, Information Systems, Digital Transformation, and Organizational Decision-Making.">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI",
+                         Inter, Helvetica, Arial, sans-serif;
+            background: #07111f;
+            color: #f5f7fa;
+            line-height: 1.6;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .container {
+            width: min(1180px, 90%);
+            margin: auto;
+        }
+
+        /* =========================
+           NAVIGATION
+        ========================= */
+
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+
+            background: rgba(7, 17, 31, 0.82);
+            backdrop-filter: blur(14px);
+            border-bottom: 1px solid rgba(255,255,255,0.07);
+        }
+
+        .nav-inner {
+            height: 76px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            font-size: 20px;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
+
+        .logo span {
+            color: #6ea8ff;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            list-style: none;
+            font-size: 14px;
+            color: #b8c4d4;
+        }
+
+        .nav-links a {
+            transition: 0.25s;
+        }
+
+        .nav-links a:hover {
+            color: white;
+        }
+
+        /* =========================
+           HERO
+        ========================= */
+
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding-top: 100px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: "";
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            background: rgba(46, 105, 190, 0.15);
+            filter: blur(120px);
+            border-radius: 50%;
+            top: 10%;
+            right: -200px;
+            pointer-events: none;
+        }
+
+        .hero-content {
+            max-width: 900px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .eyebrow {
+            color: #75aaff;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-size: 13px;
+            font-weight: 600;
+            margin-bottom: 24px;
+        }
+
+        .hero h1 {
+            font-size: clamp(58px, 8vw, 108px);
+            line-height: 0.98;
+            letter-spacing: -5px;
+            margin-bottom: 30px;
+        }
+
+        .hero h1 span {
+            color: #9db9dc;
+        }
+
+        .hero-description {
+            max-width: 730px;
+            font-size: 21px;
+            line-height: 1.7;
+            color: #aebbd0;
+            margin-bottom: 42px;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 14px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 13px 22px;
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: 600;
+            transition: 0.25s;
+        }
+
+        .btn-primary {
+            background: #f5f7fa;
+            color: #07111f;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            background: white;
+        }
+
+        .btn-secondary {
+            border: 1px solid rgba(255,255,255,0.18);
+            color: #f5f7fa;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255,255,255,0.06);
+            transform: translateY(-2px);
+        }
+
+        /* =========================
+           SECTIONS
+        ========================= */
+
+        section {
+            padding: 120px 0;
+        }
+
+        .section-label {
+            color: #6ea8ff;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-size: 12px;
+            font-weight: 700;
+            margin-bottom: 18px;
+        }
+
+        .section-title {
+            font-size: clamp(38px, 5vw, 64px);
+            letter-spacing: -2.5px;
+            line-height: 1.05;
+            margin-bottom: 28px;
+        }
+
+        .section-description {
+            max-width: 720px;
+            color: #aebbd0;
+            font-size: 18px;
+        }
+
+        /* =========================
+           RESEARCH
+        ========================= */
+
+        .research-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 18px;
+            margin-top: 60px;
+        }
+
+        .research-card {
+            padding: 36px;
+            min-height: 220px;
+            border: 1px solid rgba(255,255,255,0.08);
+            background: rgba(255,255,255,0.025);
+            border-radius: 10px;
+            transition: 0.3s;
+        }
+
+        .research-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(110,168,255,0.35);
+            background: rgba(255,255,255,0.045);
+        }
+
+        .research-number {
+            font-size: 13px;
+            color: #6688b4;
+            margin-bottom: 28px;
+        }
+
+        .research-card h3 {
+            font-size: 25px;
+            margin-bottom: 13px;
+        }
+
+        .research-card p {
+            color: #9facbf;
+            font-size: 15px;
+        }
+
+        /* =========================
+           ABOUT
+        ========================= */
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.5fr;
+            gap: 80px;
+            align-items: start;
+        }
+
+        .about-text {
+            color: #aebbd0;
+            font-size: 17px;
+            line-height: 1.9;
+        }
+
+        .about-text p {
+            margin-bottom: 20px;
+        }
+
+        /* =========================
+           PUBLICATIONS
+        ========================= */
+
+        .publication-list {
+            margin-top: 55px;
+        }
+
+        .publication {
+            padding: 30px 0;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            display: grid;
+            grid-template-columns: 100px 1fr;
+            gap: 30px;
+        }
+
+        .publication:last-child {
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .publication-year {
+            color: #6ea8ff;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .publication h3 {
+            font-size: 20px;
+            margin-bottom: 8px;
+        }
+
+        .publication p {
+            color: #919fb4;
+            font-size: 14px;
+        }
+
+        /* =========================
+           EDUCATION
+        ========================= */
+
+        .education {
+            margin-top: 55px;
+        }
+
+        .education-item {
+            display: grid;
+            grid-template-columns: 150px 1fr;
+            gap: 30px;
+            padding: 28px 0;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .education-item:last-child {
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .education-year {
+            color: #6ea8ff;
+            font-size: 14px;
+        }
+
+        .education h3 {
+            font-size: 20px;
+            margin-bottom: 5px;
+        }
+
+        .education p {
+            color: #919fb4;
+        }
+
+        /* =========================
+           CONTACT
+        ========================= */
+
+        .contact {
+            text-align: center;
+            padding-bottom: 150px;
+        }
+
+        .contact .section-description {
+            margin: 0 auto 40px;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .social-links a {
+            padding: 12px 18px;
+            border: 1px solid rgba(255,255,255,0.12);
+            border-radius: 6px;
+            color: #b8c4d4;
+            font-size: 14px;
+            transition: 0.25s;
+        }
+
+        .social-links a:hover {
+            color: white;
+            border-color: rgba(110,168,255,0.5);
+        }
+
+        /* =========================
+           FOOTER
+        ========================= */
+
+        footer {
+            border-top: 1px solid rgba(255,255,255,0.07);
+            padding: 30px 0;
+            color: #66758b;
+            font-size: 13px;
+        }
+
+        .footer-inner {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        /* =========================
+           MOBILE
+        ========================= */
+
+        @media (max-width: 800px) {
+
+            .nav-links {
+                display: none;
+            }
+
+            .hero h1 {
+                letter-spacing: -3px;
+            }
+
+            .hero-description {
+                font-size: 18px;
+            }
+
+            .research-grid,
+            .about-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .about-grid {
+                gap: 40px;
+            }
+
+            .publication {
+                grid-template-columns: 1fr;
+                gap: 8px;
+            }
+
+            .education-item {
+                grid-template-columns: 1fr;
+                gap: 8px;
+            }
+
+            .footer-inner {
+                flex-direction: column;
+            }
+        }
+    </style>
 </head>
 
 <body>
-    <h1>Ali Yari</h1>
-    <p>AI · Information Systems · Digital Transformation</p>
+
+<!-- =========================
+     NAVIGATION
+========================= -->
+
+<nav>
+    <div class="container nav-inner">
+
+        <a href="#" class="logo">
+            Ali<span>.</span>
+        </a>
+
+        <ul class="nav-links">
+            <li><a href="#about">About</a></li>
+            <li><a href="#research">Research</a></li>
+            <li><a href="#publications">Publications</a></li>
+            <li><a href="#education">Education</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+
+    </div>
+</nav>
+
+
+<!-- =========================
+     HERO
+========================= -->
+
+<header class="hero">
+
+    <div class="container">
+
+        <div class="hero-content">
+
+            <div class="eyebrow">
+                AI · Information Systems · Organizations
+            </div>
+
+            <h1>
+                Ali Yari<span>.</span>
+            </h1>
+
+            <p class="hero-description">
+                Researching how artificial intelligence is transforming
+                organizational decision-making, information systems,
+                and the way humans and autonomous AI agents work together.
+            </p>
+
+            <div class="buttons">
+
+                <a href="#research" class="btn btn-primary">
+                    Explore Research
+                </a>
+
+                <a href="#contact" class="btn btn-secondary">
+                    Get in Touch
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</header>
+
+
+<!-- =========================
+     ABOUT
+========================= -->
+
+<section id="about">
+
+    <div class="container">
+
+        <div class="about-grid">
+
+            <div>
+                <div class="section-label">01 / About</div>
+
+                <h2 class="section-title">
+                    Research at the intersection of AI & organizations.
+                </h2>
+            </div>
+
+            <div class="about-text">
+
+                <p>
+                    I am an Information Systems researcher interested in
+                    artificial intelligence, digital transformation, and
+                    organizational decision-making.
+                </p>
+
+                <p>
+                    My research explores how emerging AI technologies
+                    reshape organizational processes, decision authority,
+                    coordination, and human–AI collaboration.
+                </p>
+
+                <p>
+                    I am particularly interested in the organizational
+                    implications of increasingly autonomous AI systems
+                    and how organizations can develop effective mechanisms
+                    for governing and coordinating them.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     RESEARCH
+========================= -->
+
+<section id="research">
+
+    <div class="container">
+
+        <div class="section-label">02 / Research</div>
+
+        <h2 class="section-title">
+            Research interests
+        </h2>
+
+        <p class="section-description">
+            My research focuses on understanding how AI changes
+            organizational systems, decision processes, and
+            human–technology relationships.
+        </p>
+
+
+        <div class="research-grid">
+
+            <div class="research-card">
+
+                <div class="research-number">01</div>
+
+                <h3>Agentic AI</h3>
+
+                <p>
+                    Autonomous and semi-autonomous AI agents,
+                    multi-agent systems, and the emergence of
+                    AI-enabled organizational capabilities.
+                </p>
+
+            </div>
+
+
+            <div class="research-card">
+
+                <div class="research-number">02</div>
+
+                <h3>Organizational Decision-Making</h3>
+
+                <p>
+                    How AI systems participate in organizational
+                    decisions and how decision authority is shared
+                    between humans and intelligent agents.
+                </p>
+
+            </div>
+
+
+            <div class="research-card">
+
+                <div class="research-number">03</div>
+
+                <h3>AI & Information Systems</h3>
+
+                <p>
+                    The interaction between artificial intelligence,
+                    information systems, organizations, and
+                    technology-enabled work.
+                </p>
+
+            </div>
+
+
+            <div class="research-card">
+
+                <div class="research-number">04</div>
+
+                <h3>Digital Transformation</h3>
+
+                <p>
+                    How organizations adapt their structures,
+                    processes, and capabilities in response to
+                    emerging digital technologies.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     PUBLICATIONS
+========================= -->
+
+<section id="publications">
+
+    <div class="container">
+
+        <div class="section-label">03 / Publications</div>
+
+        <h2 class="section-title">
+            Selected research
+        </h2>
+
+        <p class="section-description">
+            Selected publications, manuscripts, and ongoing research projects.
+        </p>
+
+
+        <div class="publication-list">
+
+            <div class="publication">
+
+                <div class="publication-year">
+                    2026
+                </div>
+
+                <div>
+                    <h3>
+                        Decoding the AI Narrative
+                    </h3>
+
+                    <p>
+                        A study of AI-related discourse, topics,
+                        and expert perspectives in professional
+                        social media environments.
+                    </p>
+                </div>
+
+            </div>
+
+
+            <div class="publication">
+
+                <div class="publication-year">
+                    2026
+                </div>
+
+                <div>
+                    <h3>
+                        AI Co-Agency and Organizational Transformation
+                    </h3>
+
+                    <p>
+                        Exploring organizational transformation
+                        when generative AI becomes an active
+                        participant in organizational work.
+                    </p>
+                </div>
+
+            </div>
+
+
+            <div class="publication">
+
+                <div class="publication-year">
+                    Ongoing
+                </div>
+
+                <div>
+                    <h3>
+                        Multi-Agent LLMs for Organizational Decision-Making
+                    </h3>
+
+                    <p>
+                        Investigating coordination, reproducibility,
+                        evidence use, and decision quality in
+                        organizational multi-agent AI systems.
+                    </p>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     EDUCATION
+========================= -->
+
+<section id="education">
+
+    <div class="container">
+
+        <div class="section-label">04 / Education</div>
+
+        <h2 class="section-title">
+            Academic background
+        </h2>
+
+
+        <div class="education">
+
+            <div class="education-item">
+
+                <div class="education-year">
+                    2024 – Present
+                </div>
+
+                <div>
+
+                    <h3>
+                        M.Sc. in IT Management
+                    </h3>
+
+                    <p>
+                        Allameh Tabataba'i University
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="education-item">
+
+                <div class="education-year">
+                    Previous
+                </div>
+
+                <div>
+
+                    <h3>
+                        B.Sc. in Biology
+                    </h3>
+
+                    <p>
+                        University of Isfahan
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     CONTACT
+========================= -->
+
+<section id="contact" class="contact">
+
+    <div class="container">
+
+        <div class="section-label">05 / Contact</div>
+
+        <h2 class="section-title">
+            Let's connect.
+        </h2>
+
+        <p class="section-description">
+            I am interested in research collaborations,
+            doctoral opportunities, and discussions around
+            AI, information systems, and organizations.
+        </p>
+
+
+        <div class="social-links">
+
+            <a href="#">
+                Email
+            </a>
+
+            <a href="#">
+                Google Scholar
+            </a>
+
+            <a href="#">
+                LinkedIn
+            </a>
+
+            <a href="https://github.com/Ali-Yari">
+                GitHub
+            </a>
+
+            <a href="#">
+                CV
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     FOOTER
+========================= -->
+
+<footer>
+
+    <div class="container footer-inner">
+
+        <div>
+            © 2026 Ali Yari
+        </div>
+
+        <div>
+            AI · Information Systems · Digital Transformation
+        </div>
+
+    </div>
+
+</footer>
+
 </body>
 </html>
