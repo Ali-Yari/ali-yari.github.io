@@ -4,873 +4,1863 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Ali Yari | AI & Information Systems Researcher</title>
+    <title>Ali Yari — AI & Information Systems Researcher</title>
 
     <meta name="description"
-          content="Ali Yari — Researcher in Artificial Intelligence, Information Systems, Digital Transformation, and Organizational Decision-Making.">
+          content="Ali Yari — Researcher working at the intersection of Artificial Intelligence, Information Systems, and Organizations.">
+
+    <!-- Premium typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+          rel="stylesheet">
+
 
     <style>
+
+        /* =========================================================
+           GLOBAL
+        ========================================================= */
+
+        :root {
+            --black: #02050a;
+            --black-soft: #050a11;
+            --navy: #07111f;
+
+            --white: #f7f9fc;
+            --white-soft: #d9e0ea;
+            --gray: #8995a7;
+            --gray-dark: #566174;
+
+            --line: rgba(255,255,255,0.09);
+            --line-soft: rgba(255,255,255,0.055);
+
+            --blue: #6f9cff;
+            --blue-soft: #9db9ff;
+        }
+
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
+
         html {
             scroll-behavior: smooth;
         }
 
+
         body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI",
-                         Inter, Helvetica, Arial, sans-serif;
-            background: #07111f;
-            color: #f5f7fa;
+            background: var(--black);
+            color: var(--white);
+
+            font-family: "Inter", sans-serif;
+
             line-height: 1.6;
+
+            overflow-x: hidden;
+
+            -webkit-font-smoothing: antialiased;
         }
+
+
+        body::selection {
+            background: white;
+            color: black;
+        }
+
 
         a {
             color: inherit;
             text-decoration: none;
         }
 
+
         .container {
-            width: min(1180px, 90%);
-            margin: auto;
+            width: min(1180px, 88%);
+            margin: 0 auto;
         }
 
-        /* =========================
+
+        /* =========================================================
+           BACKGROUND
+        ========================================================= */
+
+        .background-grid {
+            position: fixed;
+            inset: 0;
+
+            pointer-events: none;
+
+            z-index: -2;
+
+            background-image:
+                linear-gradient(
+                    rgba(255,255,255,0.018) 1px,
+                    transparent 1px
+                ),
+                linear-gradient(
+                    90deg,
+                    rgba(255,255,255,0.018) 1px,
+                    transparent 1px
+                );
+
+            background-size: 80px 80px;
+
+            mask-image: linear-gradient(
+                to bottom,
+                black 0%,
+                transparent 75%
+            );
+        }
+
+
+        .ambient-light {
+            position: fixed;
+
+            width: 700px;
+            height: 700px;
+
+            border-radius: 50%;
+
+            background: rgba(36, 78, 150, 0.10);
+
+            filter: blur(140px);
+
+            top: -300px;
+            right: -250px;
+
+            pointer-events: none;
+
+            z-index: -1;
+        }
+
+
+        /* =========================================================
            NAVIGATION
-        ========================= */
+        ========================================================= */
 
         nav {
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
+
+            top: 18px;
+            left: 50%;
+
+            transform: translateX(-50%);
+
+            width: min(1100px, 92%);
+
             z-index: 1000;
 
-            background: rgba(7, 17, 31, 0.82);
-            backdrop-filter: blur(14px);
-            border-bottom: 1px solid rgba(255,255,255,0.07);
+            background: rgba(4, 8, 14, 0.72);
+
+            border: 1px solid rgba(255,255,255,0.09);
+
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+
+            border-radius: 12px;
+
+            box-shadow:
+                0 15px 50px rgba(0,0,0,0.35);
         }
 
+
         .nav-inner {
-            height: 76px;
+            height: 68px;
+
             display: flex;
             align-items: center;
             justify-content: space-between;
+
+            padding: 0 22px;
         }
+
 
         .logo {
-            font-size: 20px;
+            font-family: "Space Grotesk", sans-serif;
+
+            font-size: 21px;
+
             font-weight: 700;
-            letter-spacing: -0.5px;
+
+            letter-spacing: -0.8px;
         }
 
+
         .logo span {
-            color: #6ea8ff;
+            color: var(--blue);
         }
+
 
         .nav-links {
             display: flex;
-            gap: 32px;
+
+            align-items: center;
+
+            gap: 30px;
+
             list-style: none;
-            font-size: 14px;
-            color: #b8c4d4;
+
+            font-size: 13px;
+
+            color: #9ca8ba;
         }
 
+
         .nav-links a {
-            transition: 0.25s;
+            position: relative;
+
+            transition:
+                color 0.25s ease;
         }
+
+
+        .nav-links a::after {
+            content: "";
+
+            position: absolute;
+
+            left: 0;
+            bottom: -7px;
+
+            width: 0;
+            height: 1px;
+
+            background: white;
+
+            transition: width 0.25s ease;
+        }
+
 
         .nav-links a:hover {
             color: white;
         }
 
-        /* =========================
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+
+        .nav-cv {
+            padding: 9px 15px;
+
+            border: 1px solid rgba(255,255,255,0.16);
+
+            border-radius: 6px;
+
+            color: white !important;
+
+            transition:
+                background 0.25s ease,
+                transform 0.25s ease;
+        }
+
+
+        .nav-cv:hover {
+            background: rgba(255,255,255,0.08);
+
+            transform: translateY(-1px);
+        }
+
+
+        .nav-cv::after {
+            display: none;
+        }
+
+
+        /* =========================================================
            HERO
-        ========================= */
+        ========================================================= */
 
         .hero {
             min-height: 100vh;
+
             display: flex;
             align-items: center;
-            padding-top: 100px;
+
             position: relative;
+
+            padding-top: 120px;
+
             overflow: hidden;
         }
 
+
         .hero::before {
             content: "";
+
             position: absolute;
-            width: 600px;
-            height: 600px;
-            background: rgba(46, 105, 190, 0.15);
-            filter: blur(120px);
+
+            width: 800px;
+            height: 800px;
+
             border-radius: 50%;
-            top: 10%;
+
+            background:
+                radial-gradient(
+                    circle,
+                    rgba(48, 91, 170, 0.14) 0%,
+                    rgba(48, 91, 170, 0.04) 35%,
+                    transparent 70%
+                );
+
+            top: -300px;
             right: -200px;
+
             pointer-events: none;
         }
 
+
         .hero-content {
-            max-width: 900px;
+            max-width: 1050px;
+
             position: relative;
+
             z-index: 2;
         }
 
-        .eyebrow {
-            color: #75aaff;
-            text-transform: uppercase;
-            letter-spacing: 3px;
-            font-size: 13px;
+
+        .hero-eyebrow {
+            display: flex;
+
+            align-items: center;
+
+            gap: 12px;
+
+            margin-bottom: 30px;
+
+            color: #94a7c4;
+
+            font-size: 12px;
+
             font-weight: 600;
-            margin-bottom: 24px;
+
+            letter-spacing: 3px;
+
+            text-transform: uppercase;
+
+            opacity: 0;
+
+            animation:
+                fadeUp 0.8s ease forwards;
+
+            animation-delay: 0.15s;
         }
+
+
+        .status-dot {
+            width: 7px;
+            height: 7px;
+
+            border-radius: 50%;
+
+            background: #82a9ff;
+
+            box-shadow:
+                0 0 15px rgba(130,169,255,0.8);
+
+            animation:
+                pulse 2.5s infinite;
+        }
+
 
         .hero h1 {
-            font-size: clamp(58px, 8vw, 108px);
-            line-height: 0.98;
-            letter-spacing: -5px;
-            margin-bottom: 30px;
+            font-family: "Space Grotesk", sans-serif;
+
+            font-size: clamp(70px, 11vw, 150px);
+
+            line-height: 0.86;
+
+            letter-spacing: -8px;
+
+            font-weight: 600;
+
+            margin-left: -8px;
+
+            margin-bottom: 45px;
+
+            opacity: 0;
+
+            animation:
+                fadeUp 0.9s ease forwards;
+
+            animation-delay: 0.25s;
         }
 
-        .hero h1 span {
-            color: #9db9dc;
+
+        .hero h1 .surname {
+            color: #7f8da2;
         }
+
+
+        .hero h1 .dot {
+            color: var(--blue);
+        }
+
 
         .hero-description {
-            max-width: 730px;
-            font-size: 21px;
-            line-height: 1.7;
-            color: #aebbd0;
+            max-width: 760px;
+
+            font-size: clamp(19px, 2.1vw, 25px);
+
+            line-height: 1.55;
+
+            color: #aeb9c9;
+
+            letter-spacing: -0.3px;
+
             margin-bottom: 42px;
+
+            opacity: 0;
+
+            animation:
+                fadeUp 0.9s ease forwards;
+
+            animation-delay: 0.4s;
         }
 
-        .buttons {
+
+        .hero-description strong {
+            color: white;
+
+            font-weight: 500;
+        }
+
+
+        .hero-buttons {
             display: flex;
-            gap: 14px;
+
+            gap: 12px;
+
             flex-wrap: wrap;
+
+            opacity: 0;
+
+            animation:
+                fadeUp 0.9s ease forwards;
+
+            animation-delay: 0.55s;
         }
 
-        .btn {
+
+        .button {
             display: inline-flex;
+
             align-items: center;
+
             justify-content: center;
-            padding: 13px 22px;
+
+            gap: 10px;
+
+            padding: 13px 20px;
+
             border-radius: 6px;
-            font-size: 14px;
+
+            font-size: 13px;
+
             font-weight: 600;
-            transition: 0.25s;
+
+            transition:
+                transform 0.25s ease,
+                background 0.25s ease,
+                border 0.25s ease;
         }
 
-        .btn-primary {
-            background: #f5f7fa;
-            color: #07111f;
-        }
 
-        .btn-primary:hover {
-            transform: translateY(-2px);
+        .button-primary {
             background: white;
+
+            color: #02050a;
         }
 
-        .btn-secondary {
-            border: 1px solid rgba(255,255,255,0.18);
-            color: #f5f7fa;
+
+        .button-primary:hover {
+            transform: translateY(-3px);
+
+            background: #e8edf5;
         }
 
-        .btn-secondary:hover {
+
+        .button-secondary {
+            border: 1px solid rgba(255,255,255,0.14);
+
+            color: #dbe2ec;
+        }
+
+
+        .button-secondary:hover {
             background: rgba(255,255,255,0.06);
-            transform: translateY(-2px);
+
+            border-color: rgba(255,255,255,0.25);
+
+            transform: translateY(-3px);
         }
 
-        /* =========================
-           SECTIONS
-        ========================= */
+
+        .arrow {
+            transition:
+                transform 0.25s ease;
+        }
+
+
+        .button:hover .arrow {
+            transform: translateX(4px);
+        }
+
+
+        /* =========================================================
+           HERO SIDE LABEL
+        ========================================================= */
+
+        .hero-meta {
+            position: absolute;
+
+            right: 0;
+            bottom: 80px;
+
+            display: flex;
+
+            flex-direction: column;
+
+            gap: 9px;
+
+            text-align: right;
+
+            color: #58667a;
+
+            font-size: 11px;
+
+            letter-spacing: 1.5px;
+
+            text-transform: uppercase;
+
+            opacity: 0;
+
+            animation:
+                fadeIn 1s ease forwards;
+
+            animation-delay: 1s;
+        }
+
+
+        .hero-meta strong {
+            color: #9aa8bb;
+
+            font-weight: 500;
+        }
+
+
+        /* =========================================================
+           SECTION
+        ========================================================= */
 
         section {
-            padding: 120px 0;
+            padding: 150px 0;
         }
 
-        .section-label {
-            color: #6ea8ff;
-            text-transform: uppercase;
+
+        .section-header {
+            max-width: 850px;
+
+            margin-bottom: 65px;
+        }
+
+
+        .section-number {
+            color: #6685b6;
+
+            font-size: 11px;
+
+            font-weight: 600;
+
             letter-spacing: 3px;
-            font-size: 12px;
-            font-weight: 700;
-            margin-bottom: 18px;
-        }
 
-        .section-title {
-            font-size: clamp(38px, 5vw, 64px);
-            letter-spacing: -2.5px;
-            line-height: 1.05;
-            margin-bottom: 28px;
-        }
+            text-transform: uppercase;
 
-        .section-description {
-            max-width: 720px;
-            color: #aebbd0;
-            font-size: 18px;
-        }
-
-        /* =========================
-           RESEARCH
-        ========================= */
-
-        .research-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 18px;
-            margin-top: 60px;
-        }
-
-        .research-card {
-            padding: 36px;
-            min-height: 220px;
-            border: 1px solid rgba(255,255,255,0.08);
-            background: rgba(255,255,255,0.025);
-            border-radius: 10px;
-            transition: 0.3s;
-        }
-
-        .research-card:hover {
-            transform: translateY(-5px);
-            border-color: rgba(110,168,255,0.35);
-            background: rgba(255,255,255,0.045);
-        }
-
-        .research-number {
-            font-size: 13px;
-            color: #6688b4;
-            margin-bottom: 28px;
-        }
-
-        .research-card h3 {
-            font-size: 25px;
-            margin-bottom: 13px;
-        }
-
-        .research-card p {
-            color: #9facbf;
-            font-size: 15px;
-        }
-
-        /* =========================
-           ABOUT
-        ========================= */
-
-        .about-grid {
-            display: grid;
-            grid-template-columns: 1fr 1.5fr;
-            gap: 80px;
-            align-items: start;
-        }
-
-        .about-text {
-            color: #aebbd0;
-            font-size: 17px;
-            line-height: 1.9;
-        }
-
-        .about-text p {
             margin-bottom: 20px;
         }
 
-        /* =========================
+
+        .section-title {
+            font-family: "Space Grotesk", sans-serif;
+
+            font-size: clamp(42px, 6vw, 75px);
+
+            line-height: 1;
+
+            letter-spacing: -3px;
+
+            font-weight: 600;
+
+            margin-bottom: 25px;
+        }
+
+
+        .section-description {
+            max-width: 700px;
+
+            color: #8794a7;
+
+            font-size: 17px;
+
+            line-height: 1.8;
+        }
+
+
+        /* =========================================================
+           ABOUT
+        ========================================================= */
+
+        .about-grid {
+            display: grid;
+
+            grid-template-columns: 0.9fr 1.5fr;
+
+            gap: 100px;
+        }
+
+
+        .about-intro {
+            font-family: "Space Grotesk", sans-serif;
+
+            font-size: 25px;
+
+            line-height: 1.45;
+
+            color: #e9edf3;
+
+            letter-spacing: -0.8px;
+        }
+
+
+        .about-text {
+            color: #8996a9;
+
+            font-size: 16px;
+
+            line-height: 1.95;
+        }
+
+
+        .about-text p {
+            margin-bottom: 22px;
+        }
+
+
+        .about-text strong {
+            color: #dce3ed;
+
+            font-weight: 500;
+        }
+
+
+        /* =========================================================
+           RESEARCH
+        ========================================================= */
+
+        .research-grid {
+            display: grid;
+
+            grid-template-columns: repeat(2, 1fr);
+
+            border-top: 1px solid var(--line);
+
+            border-left: 1px solid var(--line);
+        }
+
+
+        .research-card {
+            min-height: 290px;
+
+            padding: 38px;
+
+            border-right: 1px solid var(--line);
+
+            border-bottom: 1px solid var(--line);
+
+            position: relative;
+
+            transition:
+                background 0.35s ease,
+                transform 0.35s ease;
+        }
+
+
+        .research-card::before {
+            content: "";
+
+            position: absolute;
+
+            top: 0;
+            left: 0;
+
+            width: 0;
+            height: 1px;
+
+            background: #789cff;
+
+            transition:
+                width 0.4s ease;
+        }
+
+
+        .research-card:hover {
+            background: rgba(255,255,255,0.025);
+        }
+
+
+        .research-card:hover::before {
+            width: 100%;
+        }
+
+
+        .research-number {
+            color: #53647c;
+
+            font-size: 11px;
+
+            letter-spacing: 2px;
+
+            margin-bottom: 55px;
+        }
+
+
+        .research-card h3 {
+            font-family: "Space Grotesk", sans-serif;
+
+            font-size: 27px;
+
+            letter-spacing: -1px;
+
+            margin-bottom: 15px;
+        }
+
+
+        .research-card p {
+            max-width: 430px;
+
+            color: #7f8b9e;
+
+            font-size: 14px;
+
+            line-height: 1.8;
+        }
+
+
+        /* =========================================================
            PUBLICATIONS
-        ========================= */
+        ========================================================= */
 
         .publication-list {
-            margin-top: 55px;
+            border-top: 1px solid var(--line);
         }
+
 
         .publication {
-            padding: 30px 0;
-            border-top: 1px solid rgba(255,255,255,0.1);
             display: grid;
-            grid-template-columns: 100px 1fr;
+
+            grid-template-columns: 110px 1fr 40px;
+
             gap: 30px;
+
+            align-items: start;
+
+            padding: 34px 0;
+
+            border-bottom: 1px solid var(--line);
+
+            transition:
+                padding 0.3s ease;
         }
 
-        .publication:last-child {
-            border-bottom: 1px solid rgba(255,255,255,0.1);
+
+        .publication:hover {
+            padding-left: 10px;
         }
+
 
         .publication-year {
-            color: #6ea8ff;
-            font-size: 14px;
-            font-weight: 600;
+            color: #647da5;
+
+            font-size: 12px;
+
+            letter-spacing: 1px;
         }
 
+
         .publication h3 {
-            font-size: 20px;
+            font-family: "Space Grotesk", sans-serif;
+
+            font-size: 21px;
+
+            letter-spacing: -0.4px;
+
             margin-bottom: 8px;
         }
 
+
         .publication p {
-            color: #919fb4;
-            font-size: 14px;
-        }
+            color: #737f92;
 
-        /* =========================
-           EDUCATION
-        ========================= */
-
-        .education {
-            margin-top: 55px;
-        }
-
-        .education-item {
-            display: grid;
-            grid-template-columns: 150px 1fr;
-            gap: 30px;
-            padding: 28px 0;
-            border-top: 1px solid rgba(255,255,255,0.1);
-        }
-
-        .education-item:last-child {
-            border-bottom: 1px solid rgba(255,255,255,0.1);
-        }
-
-        .education-year {
-            color: #6ea8ff;
-            font-size: 14px;
-        }
-
-        .education h3 {
-            font-size: 20px;
-            margin-bottom: 5px;
-        }
-
-        .education p {
-            color: #919fb4;
-        }
-
-        /* =========================
-           CONTACT
-        ========================= */
-
-        .contact {
-            text-align: center;
-            padding-bottom: 150px;
-        }
-
-        .contact .section-description {
-            margin: 0 auto 40px;
-        }
-
-        .social-links {
-            display: flex;
-            justify-content: center;
-            gap: 12px;
-            flex-wrap: wrap;
-        }
-
-        .social-links a {
-            padding: 12px 18px;
-            border: 1px solid rgba(255,255,255,0.12);
-            border-radius: 6px;
-            color: #b8c4d4;
-            font-size: 14px;
-            transition: 0.25s;
-        }
-
-        .social-links a:hover {
-            color: white;
-            border-color: rgba(110,168,255,0.5);
-        }
-
-        /* =========================
-           FOOTER
-        ========================= */
-
-        footer {
-            border-top: 1px solid rgba(255,255,255,0.07);
-            padding: 30px 0;
-            color: #66758b;
             font-size: 13px;
         }
 
+
+        .publication-arrow {
+            color: #60718a;
+
+            font-size: 18px;
+
+            transition:
+                transform 0.25s ease,
+                color 0.25s ease;
+        }
+
+
+        .publication:hover .publication-arrow {
+            transform: translateX(5px);
+
+            color: white;
+        }
+
+
+        /* =========================================================
+           EDUCATION
+        ========================================================= */
+
+        .education-list {
+            border-top: 1px solid var(--line);
+        }
+
+
+        .education-item {
+            display: grid;
+
+            grid-template-columns: 160px 1fr;
+
+            gap: 35px;
+
+            padding: 35px 0;
+
+            border-bottom: 1px solid var(--line);
+        }
+
+
+        .education-year {
+            color: #657fa8;
+
+            font-size: 12px;
+
+            letter-spacing: 1px;
+        }
+
+
+        .education-item h3 {
+            font-family: "Space Grotesk", sans-serif;
+
+            font-size: 22px;
+
+            margin-bottom: 5px;
+        }
+
+
+        .education-item p {
+            color: #788598;
+
+            font-size: 14px;
+        }
+
+
+        /* =========================================================
+           CONTACT
+        ========================================================= */
+
+        .contact {
+            padding-top: 170px;
+
+            padding-bottom: 170px;
+        }
+
+
+        .contact-inner {
+            border-top: 1px solid var(--line);
+
+            padding-top: 65px;
+        }
+
+
+        .contact-title {
+            font-family: "Space Grotesk", sans-serif;
+
+            font-size: clamp(55px, 9vw, 110px);
+
+            line-height: 0.95;
+
+            letter-spacing: -6px;
+
+            max-width: 900px;
+
+            margin-bottom: 35px;
+        }
+
+
+        .contact-title span {
+            color: #73849c;
+        }
+
+
+        .contact-description {
+            color: #8996a9;
+
+            max-width: 600px;
+
+            font-size: 16px;
+
+            margin-bottom: 40px;
+        }
+
+
+        .social-links {
+            display: flex;
+
+            flex-wrap: wrap;
+
+            gap: 10px;
+        }
+
+
+        .social-links a {
+            border: 1px solid rgba(255,255,255,0.11);
+
+            padding: 12px 18px;
+
+            border-radius: 5px;
+
+            color: #aeb8c7;
+
+            font-size: 13px;
+
+            transition:
+                background 0.25s ease,
+                color 0.25s ease,
+                transform 0.25s ease;
+        }
+
+
+        .social-links a:hover {
+            background: white;
+
+            color: black;
+
+            transform: translateY(-2px);
+        }
+
+
+        /* =========================================================
+           FOOTER
+        ========================================================= */
+
+        footer {
+            border-top: 1px solid var(--line-soft);
+
+            padding: 28px 0;
+
+            color: #505d70;
+
+            font-size: 11px;
+
+            letter-spacing: 0.5px;
+        }
+
+
         .footer-inner {
             display: flex;
+
             justify-content: space-between;
+
             gap: 20px;
         }
 
-        /* =========================
+
+        /* =========================================================
+           ANIMATIONS
+        ========================================================= */
+
+        @keyframes fadeUp {
+
+            from {
+                opacity: 0;
+
+                transform:
+                    translateY(25px);
+            }
+
+            to {
+                opacity: 1;
+
+                transform:
+                    translateY(0);
+            }
+
+        }
+
+
+        @keyframes fadeIn {
+
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+
+        }
+
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                opacity: 0.5;
+
+                transform:
+                    scale(0.9);
+            }
+
+            50% {
+                opacity: 1;
+
+                transform:
+                    scale(1.15);
+            }
+
+        }
+
+
+        /* =========================================================
+           SCROLL REVEAL
+        ========================================================= */
+
+        .reveal {
+            opacity: 0;
+
+            transform:
+                translateY(30px);
+
+            transition:
+                opacity 0.8s ease,
+                transform 0.8s ease;
+        }
+
+
+        .reveal.visible {
+            opacity: 1;
+
+            transform:
+                translateY(0);
+        }
+
+
+        /* =========================================================
            MOBILE
-        ========================= */
+        ========================================================= */
 
         @media (max-width: 800px) {
+
+            nav {
+                top: 10px;
+
+                width: 94%;
+            }
+
+
+            .nav-inner {
+                height: 62px;
+
+                padding: 0 16px;
+            }
+
 
             .nav-links {
                 display: none;
             }
 
-            .hero h1 {
-                letter-spacing: -3px;
+
+            .hero {
+                padding-top: 150px;
             }
+
+
+            .hero h1 {
+                font-size: clamp(65px, 18vw, 105px);
+
+                letter-spacing: -5px;
+
+                margin-left: -4px;
+            }
+
 
             .hero-description {
                 font-size: 18px;
             }
 
-            .research-grid,
-            .about-grid {
-                grid-template-columns: 1fr;
+
+            .hero-meta {
+                display: none;
             }
 
+
+            section {
+                padding: 100px 0;
+            }
+
+
+            .section-title {
+                letter-spacing: -2px;
+            }
+
+
             .about-grid {
+                grid-template-columns: 1fr;
+
                 gap: 40px;
             }
 
-            .publication {
+
+            .research-grid {
                 grid-template-columns: 1fr;
-                gap: 8px;
             }
+
+
+            .research-card {
+                min-height: 250px;
+            }
+
+
+            .publication {
+                grid-template-columns: 70px 1fr;
+
+                gap: 18px;
+            }
+
+
+            .publication-arrow {
+                display: none;
+            }
+
 
             .education-item {
                 grid-template-columns: 1fr;
+
                 gap: 8px;
             }
+
+
+            .contact-title {
+                letter-spacing: -3px;
+            }
+
 
             .footer-inner {
                 flex-direction: column;
             }
+
         }
+
     </style>
 </head>
 
+
 <body>
 
-<!-- =========================
-     NAVIGATION
-========================= -->
+    <!-- Background -->
 
-<nav>
-    <div class="container nav-inner">
+    <div class="background-grid"></div>
 
-        <a href="#" class="logo">
-            Ali<span>.</span>
-        </a>
-
-        <ul class="nav-links">
-            <li><a href="#about">About</a></li>
-            <li><a href="#research">Research</a></li>
-            <li><a href="#publications">Publications</a></li>
-            <li><a href="#education">Education</a></li>
-            <li><a href="#contact">Contact</a></li>
-        </ul>
-
-    </div>
-</nav>
+    <div class="ambient-light"></div>
 
 
-<!-- =========================
-     HERO
-========================= -->
+    <!-- =========================================================
+         NAVIGATION
+    ========================================================= -->
 
-<header class="hero">
+    <nav>
 
-    <div class="container">
+        <div class="nav-inner">
 
-        <div class="hero-content">
+            <a href="#" class="logo">
+                Ali<span>.</span>
+            </a>
 
-            <div class="eyebrow">
-                AI · Information Systems · Organizations
+
+            <ul class="nav-links">
+
+                <li>
+                    <a href="#about">About</a>
+                </li>
+
+                <li>
+                    <a href="#research">Research</a>
+                </li>
+
+                <li>
+                    <a href="#publications">Publications</a>
+                </li>
+
+                <li>
+                    <a href="#education">Education</a>
+                </li>
+
+                <li>
+                    <a href="#contact">Contact</a>
+                </li>
+
+                <li>
+                    <a href="#" class="nav-cv">
+                        CV ↗
+                    </a>
+                </li>
+
+            </ul>
+
+        </div>
+
+    </nav>
+
+
+    <!-- =========================================================
+         HERO
+    ========================================================= -->
+
+    <header class="hero">
+
+        <div class="container">
+
+            <div class="hero-content">
+
+                <div class="hero-eyebrow">
+
+                    <span class="status-dot"></span>
+
+                    AI · INFORMATION SYSTEMS · ORGANIZATIONS
+
+                </div>
+
+
+                <h1>
+
+                    Ali
+                    <span class="surname">
+                        Yari
+                    </span>
+                    <span class="dot">
+                        .
+                    </span>
+
+                </h1>
+
+
+                <p class="hero-description">
+
+                    Exploring how
+                    <strong>
+                        increasingly autonomous AI systems
+                    </strong>
+                    are reshaping organizational decision-making,
+                    coordination, and information systems.
+
+                </p>
+
+
+                <div class="hero-buttons">
+
+                    <a href="#research"
+                       class="button button-primary">
+
+                        Explore Research
+
+                        <span class="arrow">
+                            →
+                        </span>
+
+                    </a>
+
+
+                    <a href="#contact"
+                       class="button button-secondary">
+
+                        Get in Touch
+
+                    </a>
+
+                </div>
+
             </div>
 
-            <h1>
-                Ali Yari<span>.</span>
-            </h1>
 
-            <p class="hero-description">
-                Researching how artificial intelligence is transforming
-                organizational decision-making, information systems,
-                and the way humans and autonomous AI agents work together.
-            </p>
+            <div class="hero-meta">
 
-            <div class="buttons">
+                <span>
+                    RESEARCHER
+                </span>
 
-                <a href="#research" class="btn btn-primary">
-                    Explore Research
-                </a>
+                <strong>
+                    AI × ORGANIZATIONS
+                </strong>
 
-                <a href="#contact" class="btn btn-secondary">
-                    Get in Touch
-                </a>
+                <span>
+                    2026
+                </span>
 
             </div>
 
         </div>
 
-    </div>
-
-</header>
+    </header>
 
 
-<!-- =========================
-     ABOUT
-========================= -->
+    <!-- =========================================================
+         ABOUT
+    ========================================================= -->
 
-<section id="about">
+    <section id="about">
 
-    <div class="container">
+        <div class="container">
 
-        <div class="about-grid">
+            <div class="section-header reveal">
 
-            <div>
-                <div class="section-label">01 / About</div>
+                <div class="section-number">
+                    01 / About
+                </div>
+
+            </div>
+
+
+            <div class="about-grid">
+
+                <div class="about-intro reveal">
+
+                    Researching the
+                    changing relationship
+                    between AI,
+                    organizations,
+                    and decision-making.
+
+                </div>
+
+
+                <div class="about-text reveal">
+
+                    <p>
+
+                        I am an Information Systems researcher
+                        interested in the intersection of
+                        <strong>
+                            artificial intelligence,
+                            organizations, and digital transformation.
+                        </strong>
+
+                    </p>
+
+
+                    <p>
+
+                        My research examines how emerging AI
+                        technologies influence organizational
+                        processes, decision authority,
+                        coordination, and human–AI collaboration.
+
+                    </p>
+
+
+                    <p>
+
+                        I am particularly interested in what happens
+                        when AI systems move beyond being passive
+                        tools and increasingly become
+                        <strong>
+                            autonomous participants in organizational work.
+                        </strong>
+
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================================================
+         RESEARCH
+    ========================================================= -->
+
+    <section id="research">
+
+        <div class="container">
+
+            <div class="section-header reveal">
+
+                <div class="section-number">
+                    02 / Research
+                </div>
 
                 <h2 class="section-title">
-                    Research at the intersection of AI & organizations.
+                    Research interests
                 </h2>
-            </div>
 
-            <div class="about-text">
+                <p class="section-description">
 
-                <p>
-                    I am an Information Systems researcher interested in
-                    artificial intelligence, digital transformation, and
-                    organizational decision-making.
-                </p>
+                    My research explores how artificial intelligence
+                    changes organizational systems, decision processes,
+                    and the relationship between humans and intelligent
+                    technologies.
 
-                <p>
-                    My research explores how emerging AI technologies
-                    reshape organizational processes, decision authority,
-                    coordination, and human–AI collaboration.
-                </p>
-
-                <p>
-                    I am particularly interested in the organizational
-                    implications of increasingly autonomous AI systems
-                    and how organizations can develop effective mechanisms
-                    for governing and coordinating them.
-                </p>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- =========================
-     RESEARCH
-========================= -->
-
-<section id="research">
-
-    <div class="container">
-
-        <div class="section-label">02 / Research</div>
-
-        <h2 class="section-title">
-            Research interests
-        </h2>
-
-        <p class="section-description">
-            My research focuses on understanding how AI changes
-            organizational systems, decision processes, and
-            human–technology relationships.
-        </p>
-
-
-        <div class="research-grid">
-
-            <div class="research-card">
-
-                <div class="research-number">01</div>
-
-                <h3>Agentic AI</h3>
-
-                <p>
-                    Autonomous and semi-autonomous AI agents,
-                    multi-agent systems, and the emergence of
-                    AI-enabled organizational capabilities.
                 </p>
 
             </div>
 
 
-            <div class="research-card">
-
-                <div class="research-number">02</div>
-
-                <h3>Organizational Decision-Making</h3>
-
-                <p>
-                    How AI systems participate in organizational
-                    decisions and how decision authority is shared
-                    between humans and intelligent agents.
-                </p>
-
-            </div>
+            <div class="research-grid">
 
 
-            <div class="research-card">
+                <div class="research-card reveal">
 
-                <div class="research-number">03</div>
+                    <div class="research-number">
+                        01
+                    </div>
 
-                <h3>AI & Information Systems</h3>
-
-                <p>
-                    The interaction between artificial intelligence,
-                    information systems, organizations, and
-                    technology-enabled work.
-                </p>
-
-            </div>
-
-
-            <div class="research-card">
-
-                <div class="research-number">04</div>
-
-                <h3>Digital Transformation</h3>
-
-                <p>
-                    How organizations adapt their structures,
-                    processes, and capabilities in response to
-                    emerging digital technologies.
-                </p>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- =========================
-     PUBLICATIONS
-========================= -->
-
-<section id="publications">
-
-    <div class="container">
-
-        <div class="section-label">03 / Publications</div>
-
-        <h2 class="section-title">
-            Selected research
-        </h2>
-
-        <p class="section-description">
-            Selected publications, manuscripts, and ongoing research projects.
-        </p>
-
-
-        <div class="publication-list">
-
-            <div class="publication">
-
-                <div class="publication-year">
-                    2026
-                </div>
-
-                <div>
                     <h3>
-                        Decoding the AI Narrative
+                        Agentic AI
                     </h3>
 
                     <p>
-                        A study of AI-related discourse, topics,
-                        and expert perspectives in professional
-                        social media environments.
-                    </p>
-                </div>
 
-            </div>
+                        Autonomous and semi-autonomous AI agents,
+                        multi-agent systems, and the emergence of
+                        AI-enabled organizational capabilities.
 
-
-            <div class="publication">
-
-                <div class="publication-year">
-                    2026
-                </div>
-
-                <div>
-                    <h3>
-                        AI Co-Agency and Organizational Transformation
-                    </h3>
-
-                    <p>
-                        Exploring organizational transformation
-                        when generative AI becomes an active
-                        participant in organizational work.
-                    </p>
-                </div>
-
-            </div>
-
-
-            <div class="publication">
-
-                <div class="publication-year">
-                    Ongoing
-                </div>
-
-                <div>
-                    <h3>
-                        Multi-Agent LLMs for Organizational Decision-Making
-                    </h3>
-
-                    <p>
-                        Investigating coordination, reproducibility,
-                        evidence use, and decision quality in
-                        organizational multi-agent AI systems.
-                    </p>
-                </div>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- =========================
-     EDUCATION
-========================= -->
-
-<section id="education">
-
-    <div class="container">
-
-        <div class="section-label">04 / Education</div>
-
-        <h2 class="section-title">
-            Academic background
-        </h2>
-
-
-        <div class="education">
-
-            <div class="education-item">
-
-                <div class="education-year">
-                    2024 – Present
-                </div>
-
-                <div>
-
-                    <h3>
-                        M.Sc. in IT Management
-                    </h3>
-
-                    <p>
-                        Allameh Tabataba'i University
                     </p>
 
                 </div>
 
-            </div>
 
+                <div class="research-card reveal">
 
-            <div class="education-item">
-
-                <div class="education-year">
-                    Previous
-                </div>
-
-                <div>
+                    <div class="research-number">
+                        02
+                    </div>
 
                     <h3>
-                        B.Sc. in Biology
+                        Organizational Decision-Making
                     </h3>
 
                     <p>
-                        University of Isfahan
+
+                        Understanding how decision authority is
+                        distributed between humans and increasingly
+                        autonomous AI agents.
+
                     </p>
 
                 </div>
 
+
+                <div class="research-card reveal">
+
+                    <div class="research-number">
+                        03
+                    </div>
+
+                    <h3>
+                        AI & Information Systems
+                    </h3>
+
+                    <p>
+
+                        Investigating the organizational implications
+                        of artificial intelligence within information
+                        systems and digital work.
+
+                    </p>
+
+                </div>
+
+
+                <div class="research-card reveal">
+
+                    <div class="research-number">
+                        04
+                    </div>
+
+                    <h3>
+                        Digital Transformation
+                    </h3>
+
+                    <p>
+
+                        Examining how organizations develop new
+                        structures, capabilities, and processes around
+                        emerging digital technologies.
+
+                    </p>
+
+                </div>
+
+
             </div>
 
         </div>
 
-    </div>
-
-</section>
+    </section>
 
 
-<!-- =========================
-     CONTACT
-========================= -->
+    <!-- =========================================================
+         PUBLICATIONS
+    ========================================================= -->
 
-<section id="contact" class="contact">
+    <section id="publications">
 
-    <div class="container">
+        <div class="container">
 
-        <div class="section-label">05 / Contact</div>
+            <div class="section-header reveal">
 
-        <h2 class="section-title">
-            Let's connect.
-        </h2>
+                <div class="section-number">
+                    03 / Publications
+                </div>
 
-        <p class="section-description">
-            I am interested in research collaborations,
-            doctoral opportunities, and discussions around
-            AI, information systems, and organizations.
-        </p>
+                <h2 class="section-title">
+                    Selected research
+                </h2>
+
+                <p class="section-description">
+
+                    Selected publications, manuscripts,
+                    and ongoing research projects.
+
+                </p>
+
+            </div>
 
 
-        <div class="social-links">
+            <div class="publication-list">
 
-            <a href="#">
-                Email
-            </a>
 
-            <a href="#">
-                Google Scholar
-            </a>
+                <div class="publication reveal">
 
-            <a href="#">
-                LinkedIn
-            </a>
+                    <div class="publication-year">
+                        2026
+                    </div>
 
-            <a href="https://github.com/Ali-Yari">
-                GitHub
-            </a>
+                    <div>
 
-            <a href="#">
-                CV
-            </a>
+                        <h3>
+                            Decoding the AI Narrative
+                        </h3>
+
+                        <p>
+                            AI discourse, expert perspectives,
+                            and emerging themes in professional
+                            social media environments.
+                        </p>
+
+                    </div>
+
+                    <div class="publication-arrow">
+                        →
+                    </div>
+
+                </div>
+
+
+                <div class="publication reveal">
+
+                    <div class="publication-year">
+                        2026
+                    </div>
+
+                    <div>
+
+                        <h3>
+                            AI Co-Agency and Organizational Transformation
+                        </h3>
+
+                        <p>
+                            Exploring organizational transformation
+                            when generative AI becomes an active
+                            participant in organizational work.
+                        </p>
+
+                    </div>
+
+                    <div class="publication-arrow">
+                        →
+                    </div>
+
+                </div>
+
+
+                <div class="publication reveal">
+
+                    <div class="publication-year">
+                        Ongoing
+                    </div>
+
+                    <div>
+
+                        <h3>
+                            Multi-Agent LLMs for Organizational Decision-Making
+                        </h3>
+
+                        <p>
+                            Investigating coordination, evidence use,
+                            reproducibility, and decision quality
+                            in organizational multi-agent AI systems.
+                        </p>
+
+                    </div>
+
+                    <div class="publication-arrow">
+                        →
+                    </div>
+
+                </div>
+
+
+            </div>
 
         </div>
 
-    </div>
-
-</section>
+    </section>
 
 
-<!-- =========================
-     FOOTER
-========================= -->
+    <!-- =========================================================
+         EDUCATION
+    ========================================================= -->
 
-<footer>
+    <section id="education">
 
-    <div class="container footer-inner">
+        <div class="container">
 
-        <div>
-            © 2026 Ali Yari
+            <div class="section-header reveal">
+
+                <div class="section-number">
+                    04 / Education
+                </div>
+
+                <h2 class="section-title">
+                    Academic background
+                </h2>
+
+            </div>
+
+
+            <div class="education-list">
+
+
+                <div class="education-item reveal">
+
+                    <div class="education-year">
+                        2024 — Present
+                    </div>
+
+                    <div>
+
+                        <h3>
+                            M.Sc. in IT Management
+                        </h3>
+
+                        <p>
+                            Allameh Tabataba'i University
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="education-item reveal">
+
+                    <div class="education-year">
+                        Previous
+                    </div>
+
+                    <div>
+
+                        <h3>
+                            B.Sc. in Biology
+                        </h3>
+
+                        <p>
+                            University of Isfahan
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
         </div>
 
-        <div>
-            AI · Information Systems · Digital Transformation
+    </section>
+
+
+    <!-- =========================================================
+         CONTACT
+    ========================================================= -->
+
+    <section id="contact" class="contact">
+
+        <div class="container">
+
+            <div class="contact-inner reveal">
+
+                <div class="section-number">
+                    05 / Contact
+                </div>
+
+
+                <h2 class="contact-title">
+
+                    Let's build
+                    <span>
+                        what's next.
+                    </span>
+
+                </h2>
+
+
+                <p class="contact-description">
+
+                    I am interested in research collaborations,
+                    doctoral opportunities, and conversations around
+                    AI, information systems, and organizations.
+
+                </p>
+
+
+                <div class="social-links">
+
+                    <a href="#">
+                        Email
+                    </a>
+
+                    <a href="#">
+                        Google Scholar
+                    </a>
+
+                    <a href="#">
+                        LinkedIn
+                    </a>
+
+                    <a href="https://github.com/Ali-Yari">
+                        GitHub
+                    </a>
+
+                    <a href="#">
+                        CV
+                    </a>
+
+                </div>
+
+            </div>
+
         </div>
 
-    </div>
+    </section>
 
-</footer>
+
+    <!-- =========================================================
+         FOOTER
+    ========================================================= -->
+
+    <footer>
+
+        <div class="container">
+
+            <div class="footer-inner">
+
+                <div>
+                    © 2026 Ali Yari
+                </div>
+
+                <div>
+                    AI · Information Systems · Organizations
+                </div>
+
+            </div>
+
+        </div>
+
+    </footer>
+
+
+    <!-- =========================================================
+         SCROLL ANIMATION
+    ========================================================= -->
+
+    <script>
+
+        const revealElements =
+            document.querySelectorAll(".reveal");
+
+
+        const observer =
+            new IntersectionObserver(
+
+                (entries) => {
+
+                    entries.forEach(
+                        (entry) => {
+
+                            if (
+                                entry.isIntersecting
+                            ) {
+
+                                entry.target.classList.add(
+                                    "visible"
+                                );
+
+                                observer.unobserve(
+                                    entry.target
+                                );
+
+                            }
+
+                        }
+                    );
+
+                },
+
+                {
+                    threshold: 0.12
+                }
+
+            );
+
+
+        revealElements.forEach(
+            (element) => {
+
+                observer.observe(
+                    element
+                );
+
+            }
+        );
+
+    </script>
+
 
 </body>
 </html>
