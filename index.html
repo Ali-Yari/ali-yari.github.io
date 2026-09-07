@@ -2,44 +2,65 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <meta name="description"
+          content="Ali Yari — Researcher in Artificial Intelligence, Information Systems, Agentic AI, and AI-enabled decision-making.">
+
+    <meta name="author" content="Ali Yari">
+
+    <meta name="theme-color" content="#050608">
 
     <title>Ali Yari — AI & Information Systems Researcher</title>
 
-    <meta name="description"
-          content="Ali Yari — Researcher working at the intersection of Artificial Intelligence, Information Systems, and Organizations.">
+    <!-- Favicon -->
+    <link rel="icon"
+          type="image/svg+xml"
+          href="favicon.svg">
 
-    <!-- Premium typography -->
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap"
           rel="stylesheet">
 
 
     <style>
 
         /* =========================================================
-           GLOBAL
+           ROOT
         ========================================================= */
 
         :root {
-            --black: #02050a;
-            --black-soft: #050a11;
-            --navy: #07111f;
+            --bg: #050608;
+            --bg-soft: #080a0d;
+            --surface: #0b0e12;
+            --surface-2: #10141a;
 
-            --white: #f7f9fc;
-            --white-soft: #d9e0ea;
-            --gray: #8995a7;
-            --gray-dark: #566174;
+            --text: #f5f7fa;
+            --text-soft: #b2b8c2;
+            --text-muted: #737b87;
 
-            --line: rgba(255,255,255,0.09);
-            --line-soft: rgba(255,255,255,0.055);
+            --line: rgba(255,255,255,0.085);
+            --line-strong: rgba(255,255,255,0.14);
 
-            --blue: #6f9cff;
-            --blue-soft: #9db9ff;
+            --accent: #78a9ff;
+            --accent-soft: rgba(120,169,255,0.12);
+
+            --radius: 18px;
+            --max-width: 1180px;
+
+            --font-body: "Inter", sans-serif;
+            --font-display: "Space Grotesk", sans-serif;
         }
 
+
+        /* =========================================================
+           RESET
+        ========================================================= */
 
         * {
             margin: 0;
@@ -47,41 +68,32 @@
             box-sizing: border-box;
         }
 
-
         html {
             scroll-behavior: smooth;
         }
 
-
         body {
-            background: var(--black);
-            color: var(--white);
-
-            font-family: "Inter", sans-serif;
-
-            line-height: 1.6;
-
+            background: var(--bg);
+            color: var(--text);
+            font-family: var(--font-body);
+            line-height: 1.7;
             overflow-x: hidden;
-
             -webkit-font-smoothing: antialiased;
+            text-rendering: optimizeLegibility;
         }
 
-
-        body::selection {
-            background: white;
-            color: black;
+        ::selection {
+            background: rgba(120,169,255,0.25);
+            color: white;
         }
-
 
         a {
             color: inherit;
             text-decoration: none;
         }
 
-
-        .container {
-            width: min(1180px, 88%);
-            margin: 0 auto;
+        button {
+            font: inherit;
         }
 
 
@@ -89,13 +101,10 @@
            BACKGROUND
         ========================================================= */
 
-        .background-grid {
+        body::before {
+            content: "";
             position: fixed;
             inset: 0;
-
-            pointer-events: none;
-
-            z-index: -2;
 
             background-image:
                 linear-gradient(
@@ -108,34 +117,55 @@
                     transparent 1px
                 );
 
-            background-size: 80px 80px;
+            background-size: 56px 56px;
 
             mask-image: linear-gradient(
                 to bottom,
-                black 0%,
+                black,
                 transparent 75%
             );
+
+            pointer-events: none;
+            z-index: -3;
+        }
+
+        body::after {
+            content: "";
+            position: fixed;
+
+            width: 650px;
+            height: 650px;
+
+            top: -280px;
+            right: -200px;
+
+            background: radial-gradient(
+                circle,
+                rgba(76,121,210,0.10),
+                transparent 68%
+            );
+
+            pointer-events: none;
+            z-index: -2;
         }
 
 
-        .ambient-light {
-            position: fixed;
+        /* =========================================================
+           LAYOUT
+        ========================================================= */
 
-            width: 700px;
-            height: 700px;
+        .container {
+            width: min(
+                calc(100% - 48px),
+                var(--max-width)
+            );
 
-            border-radius: 50%;
+            margin: 0 auto;
+        }
 
-            background: rgba(36, 78, 150, 0.10);
-
-            filter: blur(140px);
-
-            top: -300px;
-            right: -250px;
-
-            pointer-events: none;
-
-            z-index: -1;
+        section {
+            padding: 125px 0;
+            border-top: 1px solid var(--line);
         }
 
 
@@ -143,133 +173,108 @@
            NAVIGATION
         ========================================================= */
 
-        nav {
+        .nav-wrapper {
             position: fixed;
+            top: 22px;
+            left: 0;
+            right: 0;
 
-            top: 18px;
-            left: 50%;
+            display: flex;
+            justify-content: center;
 
-            transform: translateX(-50%);
-
-            width: min(1100px, 92%);
-
-            z-index: 1000;
-
-            background: rgba(4, 8, 14, 0.72);
-
-            border: 1px solid rgba(255,255,255,0.09);
-
-            backdrop-filter: blur(18px);
-            -webkit-backdrop-filter: blur(18px);
-
-            border-radius: 12px;
-
-            box-shadow:
-                0 15px 50px rgba(0,0,0,0.35);
+            z-index: 100;
+            pointer-events: none;
         }
 
-
-        .nav-inner {
-            height: 68px;
+        .nav {
+            width: min(
+                calc(100% - 32px),
+                980px
+            );
 
             display: flex;
             align-items: center;
             justify-content: space-between;
 
-            padding: 0 22px;
+            padding: 10px 12px 10px 18px;
+
+            border: 1px solid rgba(255,255,255,0.10);
+
+            background:
+                rgba(9,11,15,0.72);
+
+            backdrop-filter: blur(22px);
+            -webkit-backdrop-filter: blur(22px);
+
+            border-radius: 100px;
+
+            box-shadow:
+                0 20px 60px rgba(0,0,0,0.30),
+                inset 0 1px 0 rgba(255,255,255,0.04);
+
+            pointer-events: auto;
         }
 
-
-        .logo {
-            font-family: "Space Grotesk", sans-serif;
-
-            font-size: 21px;
-
+        .nav-logo {
+            font-family: var(--font-display);
             font-weight: 700;
-
-            letter-spacing: -0.8px;
+            font-size: 18px;
+            letter-spacing: -0.04em;
         }
 
-
-        .logo span {
-            color: var(--blue);
+        .nav-logo span {
+            color: var(--accent);
         }
-
 
         .nav-links {
             display: flex;
-
             align-items: center;
-
-            gap: 30px;
-
-            list-style: none;
-
-            font-size: 13px;
-
-            color: #9ca8ba;
+            gap: 5px;
         }
-
 
         .nav-links a {
-            position: relative;
+            padding: 8px 13px;
+
+            color: #aeb5bf;
+
+            font-size: 13px;
+            font-weight: 500;
+
+            border-radius: 100px;
 
             transition:
-                color 0.25s ease;
+                color 180ms ease,
+                background 180ms ease;
         }
-
-
-        .nav-links a::after {
-            content: "";
-
-            position: absolute;
-
-            left: 0;
-            bottom: -7px;
-
-            width: 0;
-            height: 1px;
-
-            background: white;
-
-            transition: width 0.25s ease;
-        }
-
 
         .nav-links a:hover {
             color: white;
+            background: rgba(255,255,255,0.06);
         }
 
+        .nav-contact {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
 
-        .nav-links a:hover::after {
-            width: 100%;
-        }
-
-
-        .nav-cv {
             padding: 9px 15px;
 
-            border: 1px solid rgba(255,255,255,0.16);
+            background: white;
+            color: #050608;
 
-            border-radius: 6px;
+            border-radius: 100px;
 
-            color: white !important;
+            font-size: 12px;
+            font-weight: 600;
 
             transition:
-                background 0.25s ease,
-                transform 0.25s ease;
+                transform 180ms ease,
+                opacity 180ms ease;
         }
 
-
-        .nav-cv:hover {
-            background: rgba(255,255,255,0.08);
-
+        .nav-contact:hover {
             transform: translateY(-1px);
-        }
-
-
-        .nav-cv::after {
-            display: none;
+            opacity: 0.9;
         }
 
 
@@ -283,332 +288,196 @@
             display: flex;
             align-items: center;
 
-            position: relative;
-
             padding-top: 120px;
-
-            overflow: hidden;
+            padding-bottom: 100px;
         }
 
-
-        .hero::before {
-            content: "";
-
-            position: absolute;
-
-            width: 800px;
-            height: 800px;
-
-            border-radius: 50%;
-
-            background:
-                radial-gradient(
-                    circle,
-                    rgba(48, 91, 170, 0.14) 0%,
-                    rgba(48, 91, 170, 0.04) 35%,
-                    transparent 70%
-                );
-
-            top: -300px;
-            right: -200px;
-
-            pointer-events: none;
+        .hero-inner {
+            max-width: 1000px;
         }
 
-
-        .hero-content {
-            max-width: 1050px;
-
-            position: relative;
-
-            z-index: 2;
-        }
-
-
-        .hero-eyebrow {
-            display: flex;
-
+        .eyebrow {
+            display: inline-flex;
             align-items: center;
-
-            gap: 12px;
+            gap: 10px;
 
             margin-bottom: 30px;
 
-            color: #94a7c4;
+            color: var(--text-muted);
 
             font-size: 12px;
-
             font-weight: 600;
 
-            letter-spacing: 3px;
-
+            letter-spacing: 0.15em;
             text-transform: uppercase;
-
-            opacity: 0;
-
-            animation:
-                fadeUp 0.8s ease forwards;
-
-            animation-delay: 0.15s;
         }
 
-
-        .status-dot {
+        .eyebrow-dot {
             width: 7px;
             height: 7px;
 
             border-radius: 50%;
 
-            background: #82a9ff;
+            background: #7ee787;
 
             box-shadow:
-                0 0 15px rgba(130,169,255,0.8);
-
-            animation:
-                pulse 2.5s infinite;
+                0 0 0 5px rgba(126,231,135,0.07);
         }
 
-
         .hero h1 {
-            font-family: "Space Grotesk", sans-serif;
+            font-family: var(--font-display);
 
-            font-size: clamp(70px, 11vw, 150px);
+            font-size: clamp(
+                72px,
+                11vw,
+                142px
+            );
 
-            line-height: 0.86;
+            line-height: 0.88;
 
-            letter-spacing: -8px;
+            letter-spacing: -0.075em;
 
             font-weight: 600;
 
-            margin-left: -8px;
-
-            margin-bottom: 45px;
-
-            opacity: 0;
-
-            animation:
-                fadeUp 0.9s ease forwards;
-
-            animation-delay: 0.25s;
+            margin-bottom: 40px;
         }
 
-
-        .hero h1 .surname {
-            color: #7f8da2;
+        .hero h1 span {
+            color: #717985;
         }
-
-
-        .hero h1 .dot {
-            color: var(--blue);
-        }
-
 
         .hero-description {
-            max-width: 760px;
+            max-width: 780px;
 
-            font-size: clamp(19px, 2.1vw, 25px);
+            font-size: clamp(
+                20px,
+                2.2vw,
+                28px
+            );
 
-            line-height: 1.55;
+            line-height: 1.45;
 
-            color: #aeb9c9;
+            color: #c6cbd3;
 
-            letter-spacing: -0.3px;
-
-            margin-bottom: 42px;
-
-            opacity: 0;
-
-            animation:
-                fadeUp 0.9s ease forwards;
-
-            animation-delay: 0.4s;
+            letter-spacing: -0.025em;
         }
-
 
         .hero-description strong {
             color: white;
-
             font-weight: 500;
         }
 
-
-        .hero-buttons {
+        .hero-meta {
             display: flex;
-
+            flex-wrap: wrap;
+            align-items: center;
             gap: 12px;
 
-            flex-wrap: wrap;
-
-            opacity: 0;
-
-            animation:
-                fadeUp 0.9s ease forwards;
-
-            animation-delay: 0.55s;
+            margin-top: 46px;
         }
 
+        .hero-pill {
+            padding: 8px 13px;
+
+            border: 1px solid var(--line);
+
+            background: rgba(255,255,255,0.025);
+
+            color: #9ea6b1;
+
+            border-radius: 100px;
+
+            font-size: 12px;
+        }
+
+        .hero-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+
+            margin-top: 42px;
+        }
 
         .button {
             display: inline-flex;
-
             align-items: center;
-
             justify-content: center;
-
             gap: 10px;
 
-            padding: 13px 20px;
+            min-height: 48px;
 
-            border-radius: 6px;
+            padding: 0 19px;
+
+            border-radius: 100px;
+
+            border: 1px solid var(--line-strong);
 
             font-size: 13px;
-
             font-weight: 600;
 
             transition:
-                transform 0.25s ease,
-                background 0.25s ease,
-                border 0.25s ease;
+                transform 180ms ease,
+                background 180ms ease,
+                border-color 180ms ease;
         }
 
+        .button:hover {
+            transform: translateY(-2px);
+            border-color: rgba(255,255,255,0.25);
+        }
 
         .button-primary {
             background: white;
-
-            color: #02050a;
+            color: #050608;
+            border-color: white;
         }
-
-
-        .button-primary:hover {
-            transform: translateY(-3px);
-
-            background: #e8edf5;
-        }
-
 
         .button-secondary {
-            border: 1px solid rgba(255,255,255,0.14);
-
-            color: #dbe2ec;
-        }
-
-
-        .button-secondary:hover {
-            background: rgba(255,255,255,0.06);
-
-            border-color: rgba(255,255,255,0.25);
-
-            transform: translateY(-3px);
-        }
-
-
-        .arrow {
-            transition:
-                transform 0.25s ease;
-        }
-
-
-        .button:hover .arrow {
-            transform: translateX(4px);
+            background: rgba(255,255,255,0.025);
+            color: white;
         }
 
 
         /* =========================================================
-           HERO SIDE LABEL
+           SECTION HEADER
         ========================================================= */
-
-        .hero-meta {
-            position: absolute;
-
-            right: 0;
-            bottom: 80px;
-
-            display: flex;
-
-            flex-direction: column;
-
-            gap: 9px;
-
-            text-align: right;
-
-            color: #58667a;
-
-            font-size: 11px;
-
-            letter-spacing: 1.5px;
-
-            text-transform: uppercase;
-
-            opacity: 0;
-
-            animation:
-                fadeIn 1s ease forwards;
-
-            animation-delay: 1s;
-        }
-
-
-        .hero-meta strong {
-            color: #9aa8bb;
-
-            font-weight: 500;
-        }
-
-
-        /* =========================================================
-           SECTION
-        ========================================================= */
-
-        section {
-            padding: 150px 0;
-        }
-
 
         .section-header {
-            max-width: 850px;
+            display: grid;
+
+            grid-template-columns:
+                240px
+                1fr;
+
+            gap: 60px;
 
             margin-bottom: 65px;
         }
 
-
         .section-number {
-            color: #6685b6;
+            color: var(--accent);
 
-            font-size: 11px;
-
+            font-size: 12px;
             font-weight: 600;
 
-            letter-spacing: 3px;
-
+            letter-spacing: 0.15em;
             text-transform: uppercase;
-
-            margin-bottom: 20px;
         }
 
-
         .section-title {
-            font-family: "Space Grotesk", sans-serif;
+            font-family: var(--font-display);
 
-            font-size: clamp(42px, 6vw, 75px);
+            font-size: clamp(
+                38px,
+                5vw,
+                62px
+            );
 
             line-height: 1;
 
-            letter-spacing: -3px;
+            letter-spacing: -0.055em;
 
-            font-weight: 600;
-
-            margin-bottom: 25px;
-        }
-
-
-        .section-description {
-            max-width: 700px;
-
-            color: #8794a7;
-
-            font-size: 17px;
-
-            line-height: 1.8;
+            font-weight: 500;
         }
 
 
@@ -619,43 +488,43 @@
         .about-grid {
             display: grid;
 
-            grid-template-columns: 0.9fr 1.5fr;
+            grid-template-columns:
+                1.1fr
+                0.9fr;
 
-            gap: 100px;
+            gap: 80px;
         }
 
+        .about-lead {
+            font-family: var(--font-display);
 
-        .about-intro {
-            font-family: "Space Grotesk", sans-serif;
+            font-size: clamp(
+                25px,
+                3vw,
+                38px
+            );
 
-            font-size: 25px;
+            line-height: 1.35;
 
-            line-height: 1.45;
+            letter-spacing: -0.035em;
 
-            color: #e9edf3;
-
-            letter-spacing: -0.8px;
+            color: #e8ebef;
         }
 
+        .about-lead span {
+            color: #727985;
+        }
 
         .about-text {
-            color: #8996a9;
+            color: var(--text-soft);
 
-            font-size: 16px;
+            font-size: 15px;
 
-            line-height: 1.95;
+            line-height: 1.9;
         }
 
-
-        .about-text p {
-            margin-bottom: 22px;
-        }
-
-
-        .about-text strong {
-            color: #dce3ed;
-
-            font-weight: 500;
+        .about-text + .about-text {
+            margin-top: 22px;
         }
 
 
@@ -666,89 +535,89 @@
         .research-grid {
             display: grid;
 
-            grid-template-columns: repeat(2, 1fr);
+            grid-template-columns:
+                repeat(2, 1fr);
 
-            border-top: 1px solid var(--line);
+            gap: 1px;
 
-            border-left: 1px solid var(--line);
+            background: var(--line);
+
+            border: 1px solid var(--line);
         }
-
 
         .research-card {
-            min-height: 290px;
-
-            padding: 38px;
-
-            border-right: 1px solid var(--line);
-
-            border-bottom: 1px solid var(--line);
-
             position: relative;
 
+            padding: 42px;
+
+            background: var(--bg);
+
+            min-height: 245px;
+
+            overflow: hidden;
+
             transition:
-                background 0.35s ease,
-                transform 0.35s ease;
+                background 220ms ease;
         }
 
-
-        .research-card::before {
+        .research-card::after {
             content: "";
 
             position: absolute;
 
-            top: 0;
-            left: 0;
+            width: 140px;
+            height: 140px;
 
-            width: 0;
-            height: 1px;
+            right: -70px;
+            bottom: -70px;
 
-            background: #789cff;
+            border-radius: 50%;
 
-            transition:
-                width 0.4s ease;
+            background: var(--accent-soft);
+
+            opacity: 0;
+
+            transition: opacity 250ms ease;
         }
-
 
         .research-card:hover {
-            background: rgba(255,255,255,0.025);
+            background: #090c10;
         }
 
-
-        .research-card:hover::before {
-            width: 100%;
+        .research-card:hover::after {
+            opacity: 1;
         }
 
+        .research-index {
+            color: #555d68;
 
-        .research-number {
-            color: #53647c;
+            font-size: 12px;
 
-            font-size: 11px;
-
-            letter-spacing: 2px;
-
-            margin-bottom: 55px;
+            margin-bottom: 45px;
         }
-
 
         .research-card h3 {
-            font-family: "Space Grotesk", sans-serif;
+            font-family: var(--font-display);
 
             font-size: 27px;
 
-            letter-spacing: -1px;
+            line-height: 1.1;
+
+            letter-spacing: -0.035em;
+
+            font-weight: 500;
 
             margin-bottom: 15px;
         }
 
-
         .research-card p {
-            max-width: 430px;
+            max-width: 450px;
 
-            color: #7f8b9e;
+            color: var(--text-muted);
 
             font-size: 14px;
 
-            line-height: 1.8;
+            line-height: 1.75;
         }
 
 
@@ -760,172 +629,271 @@
             border-top: 1px solid var(--line);
         }
 
-
         .publication {
             display: grid;
 
-            grid-template-columns: 110px 1fr 40px;
+            grid-template-columns:
+                60px
+                1fr
+                auto;
 
-            gap: 30px;
+            gap: 35px;
 
             align-items: start;
 
-            padding: 34px 0;
+            padding: 32px 0;
 
             border-bottom: 1px solid var(--line);
 
             transition:
-                padding 0.3s ease;
+                padding 180ms ease;
         }
-
 
         .publication:hover {
-            padding-left: 10px;
+            padding-left: 8px;
         }
 
+        .publication-number {
+            color: #555d68;
 
-        .publication-year {
-            color: #647da5;
+            font-family: var(--font-display);
+
+            font-size: 14px;
+        }
+
+        .publication-title {
+            font-family: var(--font-display);
+
+            font-size: 19px;
+
+            line-height: 1.45;
+
+            letter-spacing: -0.02em;
+
+            font-weight: 500;
+
+            margin-bottom: 10px;
+        }
+
+        .publication-authors {
+            color: var(--text-muted);
+
+            font-size: 13px;
+
+            margin-bottom: 9px;
+        }
+
+        .publication-venue {
+            color: #8f97a2;
+
+            font-size: 12px;
+        }
+
+        .publication-tag {
+            display: inline-flex;
+
+            padding: 6px 10px;
+
+            border: 1px solid var(--line);
+
+            border-radius: 100px;
+
+            color: #9ba2ad;
+
+            font-size: 10px;
+
+            white-space: nowrap;
+        }
+
+        .publication-link {
+            display: inline-flex;
+
+            margin-top: 13px;
+
+            color: var(--accent);
 
             font-size: 12px;
 
-            letter-spacing: 1px;
+            transition: opacity 180ms ease;
         }
 
-
-        .publication h3 {
-            font-family: "Space Grotesk", sans-serif;
-
-            font-size: 21px;
-
-            letter-spacing: -0.4px;
-
-            margin-bottom: 8px;
-        }
-
-
-        .publication p {
-            color: #737f92;
-
-            font-size: 13px;
-        }
-
-
-        .publication-arrow {
-            color: #60718a;
-
-            font-size: 18px;
-
-            transition:
-                transform 0.25s ease,
-                color 0.25s ease;
-        }
-
-
-        .publication:hover .publication-arrow {
-            transform: translateX(5px);
-
-            color: white;
+        .publication-link:hover {
+            opacity: 0.7;
         }
 
 
         /* =========================================================
-           EDUCATION
+           TIMELINE
         ========================================================= */
 
-        .education-list {
+        .timeline {
             border-top: 1px solid var(--line);
         }
 
-
-        .education-item {
+        .timeline-item {
             display: grid;
 
-            grid-template-columns: 160px 1fr;
+            grid-template-columns:
+                170px
+                1fr;
 
-            gap: 35px;
+            gap: 50px;
+
+            padding: 38px 0;
+
+            border-bottom: 1px solid var(--line);
+        }
+
+        .timeline-date {
+            color: var(--text-muted);
+
+            font-size: 12px;
+
+            padding-top: 5px;
+        }
+
+        .timeline-title {
+            font-family: var(--font-display);
+
+            font-size: 23px;
+
+            line-height: 1.3;
+
+            letter-spacing: -0.025em;
+
+            margin-bottom: 8px;
+        }
+
+        .timeline-place {
+            color: #969da7;
+
+            font-size: 14px;
+
+            margin-bottom: 15px;
+        }
+
+        .timeline-description {
+            max-width: 760px;
+
+            color: var(--text-muted);
+
+            font-size: 13px;
+
+            line-height: 1.8;
+        }
+
+
+        /* =========================================================
+           TWO COLUMN
+        ========================================================= */
+
+        .two-column {
+            display: grid;
+
+            grid-template-columns:
+                1fr
+                1fr;
+
+            gap: 90px;
+        }
+
+        .subsection-title {
+            font-family: var(--font-display);
+
+            font-size: 26px;
+
+            letter-spacing: -0.035em;
+
+            margin-bottom: 30px;
+        }
+
+        .simple-list {
+            border-top: 1px solid var(--line);
+        }
+
+        .simple-item {
+            padding: 21px 0;
+
+            border-bottom: 1px solid var(--line);
+
+            color: #aeb5bf;
+
+            font-size: 13px;
+
+            line-height: 1.65;
+        }
+
+        .simple-item strong {
+            display: block;
+
+            color: #e9ecf0;
+
+            font-family: var(--font-display);
+
+            font-size: 15px;
+
+            font-weight: 500;
+
+            margin-bottom: 4px;
+        }
+
+
+        /* =========================================================
+           PROJECTS
+        ========================================================= */
+
+        .project-list {
+            border-top: 1px solid var(--line);
+        }
+
+        .project {
+            display: grid;
+
+            grid-template-columns:
+                70px
+                1fr;
+
+            gap: 30px;
 
             padding: 35px 0;
 
             border-bottom: 1px solid var(--line);
         }
 
-
-        .education-year {
-            color: #657fa8;
+        .project-number {
+            color: #555d68;
 
             font-size: 12px;
-
-            letter-spacing: 1px;
         }
 
+        .project h3 {
+            font-family: var(--font-display);
 
-        .education-item h3 {
-            font-family: "Space Grotesk", sans-serif;
+            font-size: 21px;
 
-            font-size: 22px;
+            font-weight: 500;
 
-            margin-bottom: 5px;
+            letter-spacing: -0.025em;
+
+            margin-bottom: 9px;
         }
 
+        .project p {
+            max-width: 760px;
 
-        .education-item p {
-            color: #788598;
+            color: var(--text-muted);
 
-            font-size: 14px;
+            font-size: 13px;
+
+            line-height: 1.8;
         }
 
 
         /* =========================================================
-           CONTACT
+           RESEARCH INTERESTS
         ========================================================= */
 
-        .contact {
-            padding-top: 170px;
-
-            padding-bottom: 170px;
-        }
-
-
-        .contact-inner {
-            border-top: 1px solid var(--line);
-
-            padding-top: 65px;
-        }
-
-
-        .contact-title {
-            font-family: "Space Grotesk", sans-serif;
-
-            font-size: clamp(55px, 9vw, 110px);
-
-            line-height: 0.95;
-
-            letter-spacing: -6px;
-
-            max-width: 900px;
-
-            margin-bottom: 35px;
-        }
-
-
-        .contact-title span {
-            color: #73849c;
-        }
-
-
-        .contact-description {
-            color: #8996a9;
-
-            max-width: 600px;
-
-            font-size: 16px;
-
-            margin-bottom: 40px;
-        }
-
-
-        .social-links {
+        .interest-grid {
             display: flex;
 
             flex-wrap: wrap;
@@ -933,31 +901,106 @@
             gap: 10px;
         }
 
+        .interest {
+            padding: 13px 17px;
 
-        .social-links a {
-            border: 1px solid rgba(255,255,255,0.11);
+            border: 1px solid var(--line);
 
-            padding: 12px 18px;
+            background: rgba(255,255,255,0.018);
 
-            border-radius: 5px;
+            border-radius: 100px;
 
-            color: #aeb8c7;
+            color: #b8bec7;
 
             font-size: 13px;
 
             transition:
-                background 0.25s ease,
-                color 0.25s ease,
-                transform 0.25s ease;
+                border-color 180ms ease,
+                color 180ms ease,
+                background 180ms ease;
+        }
+
+        .interest:hover {
+            color: white;
+
+            border-color: rgba(120,169,255,0.35);
+
+            background: var(--accent-soft);
         }
 
 
-        .social-links a:hover {
-            background: white;
+        /* =========================================================
+           CONTACT
+        ========================================================= */
 
-            color: black;
+        .contact-section {
+            padding-bottom: 80px;
+        }
 
-            transform: translateY(-2px);
+        .contact-grid {
+            display: grid;
+
+            grid-template-columns:
+                1fr
+                1fr;
+
+            gap: 80px;
+        }
+
+        .contact-lead {
+            font-family: var(--font-display);
+
+            font-size: clamp(
+                32px,
+                4vw,
+                55px
+            );
+
+            line-height: 1.05;
+
+            letter-spacing: -0.055em;
+        }
+
+        .contact-lead span {
+            color: #6e7681;
+        }
+
+        .contact-links {
+            display: flex;
+
+            flex-direction: column;
+
+            border-top: 1px solid var(--line);
+        }
+
+        .contact-link {
+            display: flex;
+
+            align-items: center;
+            justify-content: space-between;
+
+            padding: 18px 0;
+
+            border-bottom: 1px solid var(--line);
+
+            color: #aeb5bf;
+
+            font-size: 13px;
+
+            transition:
+                color 180ms ease,
+                padding 180ms ease;
+        }
+
+        .contact-link:hover {
+            color: white;
+            padding-left: 7px;
+        }
+
+        .contact-arrow {
+            color: #555d68;
+
+            font-size: 16px;
         }
 
 
@@ -966,104 +1009,24 @@
         ========================================================= */
 
         footer {
-            border-top: 1px solid var(--line-soft);
+            padding: 35px 0 45px;
 
-            padding: 28px 0;
+            border-top: 1px solid var(--line);
 
-            color: #505d70;
+            color: #555d68;
 
             font-size: 11px;
-
-            letter-spacing: 0.5px;
         }
-
 
         .footer-inner {
             display: flex;
 
+            align-items: center;
             justify-content: space-between;
-
-            gap: 20px;
         }
 
-
-        /* =========================================================
-           ANIMATIONS
-        ========================================================= */
-
-        @keyframes fadeUp {
-
-            from {
-                opacity: 0;
-
-                transform:
-                    translateY(25px);
-            }
-
-            to {
-                opacity: 1;
-
-                transform:
-                    translateY(0);
-            }
-
-        }
-
-
-        @keyframes fadeIn {
-
-            from {
-                opacity: 0;
-            }
-
-            to {
-                opacity: 1;
-            }
-
-        }
-
-
-        @keyframes pulse {
-
-            0%,
-            100% {
-                opacity: 0.5;
-
-                transform:
-                    scale(0.9);
-            }
-
-            50% {
-                opacity: 1;
-
-                transform:
-                    scale(1.15);
-            }
-
-        }
-
-
-        /* =========================================================
-           SCROLL REVEAL
-        ========================================================= */
-
-        .reveal {
-            opacity: 0;
-
-            transform:
-                translateY(30px);
-
-            transition:
-                opacity 0.8s ease,
-                transform 0.8s ease;
-        }
-
-
-        .reveal.visible {
-            opacity: 1;
-
-            transform:
-                translateY(0);
+        .footer-name {
+            color: #777f8a;
         }
 
 
@@ -1073,104 +1036,140 @@
 
         @media (max-width: 800px) {
 
-            nav {
-                top: 10px;
-
-                width: 94%;
+            .container {
+                width: min(
+                    calc(100% - 32px),
+                    var(--max-width)
+                );
             }
 
-
-            .nav-inner {
-                height: 62px;
-
-                padding: 0 16px;
+            section {
+                padding: 85px 0;
             }
 
+            .nav-wrapper {
+                top: 12px;
+            }
+
+            .nav {
+                width: calc(100% - 24px);
+
+                padding: 9px 10px 9px 15px;
+            }
 
             .nav-links {
                 display: none;
             }
 
+            .nav-contact {
+                padding: 8px 13px;
+            }
 
             .hero {
-                padding-top: 150px;
-            }
+                min-height: auto;
 
+                padding-top: 170px;
+                padding-bottom: 90px;
+            }
 
             .hero h1 {
-                font-size: clamp(65px, 18vw, 105px);
+                font-size: clamp(
+                    68px,
+                    21vw,
+                    105px
+                );
 
-                letter-spacing: -5px;
-
-                margin-left: -4px;
+                margin-bottom: 32px;
             }
-
 
             .hero-description {
-                font-size: 18px;
+                font-size: 19px;
             }
-
 
             .hero-meta {
-                display: none;
+                margin-top: 32px;
             }
 
+            .section-header {
+                display: block;
 
-            section {
-                padding: 100px 0;
+                margin-bottom: 42px;
             }
 
-
-            .section-title {
-                letter-spacing: -2px;
+            .section-number {
+                margin-bottom: 18px;
             }
 
-
-            .about-grid {
+            .about-grid,
+            .two-column,
+            .contact-grid {
                 grid-template-columns: 1fr;
 
-                gap: 40px;
+                gap: 45px;
             }
-
 
             .research-grid {
                 grid-template-columns: 1fr;
             }
 
-
             .research-card {
-                min-height: 250px;
+                min-height: 215px;
+
+                padding: 30px;
             }
 
-
             .publication {
-                grid-template-columns: 70px 1fr;
+                grid-template-columns:
+                    35px
+                    1fr;
 
                 gap: 18px;
             }
 
-
-            .publication-arrow {
-                display: none;
+            .publication-tag {
+                grid-column: 2;
+                justify-self: start;
             }
 
-
-            .education-item {
+            .timeline-item {
                 grid-template-columns: 1fr;
 
-                gap: 8px;
+                gap: 10px;
             }
 
+            .project {
+                grid-template-columns:
+                    35px
+                    1fr;
 
-            .contact-title {
-                letter-spacing: -3px;
+                gap: 15px;
             }
-
 
             .footer-inner {
                 flex-direction: column;
+
+                align-items: flex-start;
+
+                gap: 8px;
+            }
+        }
+
+
+        /* =========================================================
+           REDUCED MOTION
+        ========================================================= */
+
+        @media (prefers-reduced-motion: reduce) {
+
+            html {
+                scroll-behavior: auto;
             }
 
+            *,
+            *::before,
+            *::after {
+                transition-duration: 0.01ms !important;
+            }
         }
 
     </style>
@@ -1179,214 +1178,180 @@
 
 <body>
 
-    <!-- Background -->
 
-    <div class="background-grid"></div>
+<!-- =========================================================
+     NAVIGATION
+========================================================= -->
 
-    <div class="ambient-light"></div>
+<div class="nav-wrapper">
 
+    <nav class="nav">
 
-    <!-- =========================================================
-         NAVIGATION
-    ========================================================= -->
+        <a href="#top" class="nav-logo">
+            AY<span>.</span>
+        </a>
 
-    <nav>
-
-        <div class="nav-inner">
-
-            <a href="#" class="logo">
-                Ali<span>.</span>
-            </a>
-
-
-            <ul class="nav-links">
-
-                <li>
-                    <a href="#about">About</a>
-                </li>
-
-                <li>
-                    <a href="#research">Research</a>
-                </li>
-
-                <li>
-                    <a href="#publications">Publications</a>
-                </li>
-
-                <li>
-                    <a href="#education">Education</a>
-                </li>
-
-                <li>
-                    <a href="#contact">Contact</a>
-                </li>
-
-                <li>
-                    <a href="#" class="nav-cv">
-                        CV ↗
-                    </a>
-                </li>
-
-            </ul>
-
+        <div class="nav-links">
+            <a href="#about">About</a>
+            <a href="#research">Research</a>
+            <a href="#publications">Publications</a>
+            <a href="#experience">Experience</a>
+            <a href="#projects">Projects</a>
         </div>
+
+        <a href="#contact" class="nav-contact">
+            Contact
+        </a>
 
     </nav>
 
+</div>
 
-    <!-- =========================================================
-         HERO
-    ========================================================= -->
 
-    <header class="hero">
+
+<!-- =========================================================
+     HERO
+========================================================= -->
+
+<main id="top">
+
+    <section class="hero">
 
         <div class="container">
 
-            <div class="hero-content">
+            <div class="hero-inner">
 
-                <div class="hero-eyebrow">
-
-                    <span class="status-dot"></span>
-
+                <div class="eyebrow">
+                    <span class="eyebrow-dot"></span>
                     AI · INFORMATION SYSTEMS · ORGANIZATIONS
-
                 </div>
 
 
                 <h1>
-
-                    Ali
-                    <span class="surname">
-                        Yari
-                    </span>
-                    <span class="dot">
-                        .
-                    </span>
-
+                    Ali Yari<span>.</span>
                 </h1>
 
 
                 <p class="hero-description">
 
-                    Exploring how
-                    <strong>
-                        increasingly autonomous AI systems
-                    </strong>
+                    Researcher exploring how
+                    <strong>increasingly autonomous AI systems</strong>
                     are reshaping organizational decision-making,
                     coordination, and information systems.
 
                 </p>
 
 
-                <div class="hero-buttons">
+                <div class="hero-meta">
 
-                    <a href="#research"
-                       class="button button-primary">
+                    <span class="hero-pill">
+                        Generative AI
+                    </span>
 
-                        Explore Research
+                    <span class="hero-pill">
+                        Agentic AI
+                    </span>
 
-                        <span class="arrow">
-                            →
-                        </span>
+                    <span class="hero-pill">
+                        Human–AI Collaboration
+                    </span>
 
-                    </a>
-
-
-                    <a href="#contact"
-                       class="button button-secondary">
-
-                        Get in Touch
-
-                    </a>
+                    <span class="hero-pill">
+                        AI-enabled Decision Making
+                    </span>
 
                 </div>
 
-            </div>
 
+                <div class="hero-actions">
 
-            <div class="hero-meta">
+                    <a
+                        href="#research"
+                        class="button button-primary">
+                        Explore my research
+                    </a>
 
-                <span>
-                    RESEARCHER
-                </span>
+                    <a
+                        href="#publications"
+                        class="button button-secondary">
+                        Selected publications
+                    </a>
 
-                <strong>
-                    AI × ORGANIZATIONS
-                </strong>
-
-                <span>
-                    2026
-                </span>
+                </div>
 
             </div>
 
         </div>
 
-    </header>
+    </section>
 
 
-    <!-- =========================================================
+
+    <!-- =====================================================
          ABOUT
-    ========================================================= -->
+    ====================================================== -->
 
     <section id="about">
 
         <div class="container">
 
-            <div class="section-header reveal">
+            <div class="section-header">
 
                 <div class="section-number">
-                    01 / About
+                    01 — About
                 </div>
+
+                <h2 class="section-title">
+                    Research at the intersection of AI,
+                    information systems, and organizations.
+                </h2>
 
             </div>
 
 
             <div class="about-grid">
 
-                <div class="about-intro reveal">
+                <div>
 
-                    Researching the
-                    changing relationship
-                    between AI,
-                    organizations,
-                    and decision-making.
+                    <p class="about-lead">
+
+                        My research examines how organizations
+                        adapt when AI moves from being a tool
+                        to becoming an increasingly autonomous
+                        participant in organizational processes.
+
+                    </p>
 
                 </div>
 
 
-                <div class="about-text reveal">
+                <div>
 
-                    <p>
+                    <p class="about-text">
 
-                        I am an Information Systems researcher
-                        interested in the intersection of
-                        <strong>
-                            artificial intelligence,
-                            organizations, and digital transformation.
-                        </strong>
+                        I hold an M.Sc. in Information Technology
+                        Management — Advanced Information Systems
+                        from Allameh Tabataba’i University.
 
                     </p>
 
+                    <p class="about-text">
 
-                    <p>
-
-                        My research examines how emerging AI
-                        technologies influence organizational
-                        processes, decision authority,
-                        coordination, and human–AI collaboration.
+                        My research interests lie at the
+                        intersection of Artificial Intelligence,
+                        Information Systems, and decision-making,
+                        with a focus on Generative AI, Agentic AI,
+                        human–AI collaboration, and AI-enabled
+                        business transformation.
 
                     </p>
 
+                    <p class="about-text">
 
-                    <p>
-
-                        I am particularly interested in what happens
-                        when AI systems move beyond being passive
-                        tools and increasingly become
-                        <strong>
-                            autonomous participants in organizational work.
-                        </strong>
+                        I am particularly interested in how
+                        organizations adapt their coordination
+                        and decision-making processes as AI systems
+                        become increasingly autonomous.
 
                     </p>
 
@@ -1399,32 +1364,24 @@
     </section>
 
 
-    <!-- =========================================================
+
+    <!-- =====================================================
          RESEARCH
-    ========================================================= -->
+    ====================================================== -->
 
     <section id="research">
 
         <div class="container">
 
-            <div class="section-header reveal">
+            <div class="section-header">
 
                 <div class="section-number">
-                    02 / Research
+                    02 — Research
                 </div>
 
                 <h2 class="section-title">
-                    Research interests
+                    Current research directions.
                 </h2>
-
-                <p class="section-description">
-
-                    My research explores how artificial intelligence
-                    changes organizational systems, decision processes,
-                    and the relationship between humans and intelligent
-                    technologies.
-
-                </p>
 
             </div>
 
@@ -1432,9 +1389,9 @@
             <div class="research-grid">
 
 
-                <div class="research-card reveal">
+                <article class="research-card">
 
-                    <div class="research-number">
+                    <div class="research-index">
                         01
                     </div>
 
@@ -1443,41 +1400,59 @@
                     </h3>
 
                     <p>
-
-                        Autonomous and semi-autonomous AI agents,
-                        multi-agent systems, and the emergence of
-                        AI-enabled organizational capabilities.
-
+                        Understanding increasingly autonomous
+                        AI agents and their implications for
+                        organizational processes, authority,
+                        coordination, and decision-making.
                     </p>
 
-                </div>
+                </article>
 
 
-                <div class="research-card reveal">
+                <article class="research-card">
 
-                    <div class="research-number">
+                    <div class="research-index">
                         02
                     </div>
 
                     <h3>
-                        Organizational Decision-Making
+                        AI-enabled Decision Making
                     </h3>
 
                     <p>
-
-                        Understanding how decision authority is
-                        distributed between humans and increasingly
-                        autonomous AI agents.
-
+                        Investigating how AI-supported and
+                        AI-mediated decision processes change
+                        organizational judgment, coordination,
+                        and information use.
                     </p>
 
-                </div>
+                </article>
 
 
-                <div class="research-card reveal">
+                <article class="research-card">
 
-                    <div class="research-number">
+                    <div class="research-index">
                         03
+                    </div>
+
+                    <h3>
+                        Human–AI Collaboration
+                    </h3>
+
+                    <p>
+                        Exploring how humans and autonomous
+                        AI systems share decision authority,
+                        expertise, responsibility, and
+                        organizational tasks.
+                    </p>
+
+                </article>
+
+
+                <article class="research-card">
+
+                    <div class="research-index">
+                        04
                     </div>
 
                     <h3>
@@ -1485,35 +1460,13 @@
                     </h3>
 
                     <p>
-
-                        Investigating the organizational implications
-                        of artificial intelligence within information
-                        systems and digital work.
-
+                        Studying the organizational and
+                        information-system implications of
+                        Generative AI, NLP, and emerging
+                        AI-enabled technologies.
                     </p>
 
-                </div>
-
-
-                <div class="research-card reveal">
-
-                    <div class="research-number">
-                        04
-                    </div>
-
-                    <h3>
-                        Digital Transformation
-                    </h3>
-
-                    <p>
-
-                        Examining how organizations develop new
-                        structures, capabilities, and processes around
-                        emerging digital technologies.
-
-                    </p>
-
-                </div>
+                </article>
 
 
             </div>
@@ -1523,30 +1476,24 @@
     </section>
 
 
-    <!-- =========================================================
+
+    <!-- =====================================================
          PUBLICATIONS
-    ========================================================= -->
+    ====================================================== -->
 
     <section id="publications">
 
         <div class="container">
 
-            <div class="section-header reveal">
+            <div class="section-header">
 
                 <div class="section-number">
-                    03 / Publications
+                    03 — Publications
                 </div>
 
                 <h2 class="section-title">
-                    Selected research
+                    Selected research.
                 </h2>
-
-                <p class="section-description">
-
-                    Selected publications, manuscripts,
-                    and ongoing research projects.
-
-                </p>
 
             </div>
 
@@ -1554,85 +1501,175 @@
             <div class="publication-list">
 
 
-                <div class="publication reveal">
+                <article class="publication">
 
-                    <div class="publication-year">
-                        2026
+                    <div class="publication-number">
+                        [01]
                     </div>
 
                     <div>
 
-                        <h3>
-                            Decoding the AI Narrative
+                        <h3 class="publication-title">
+                            Understanding AI Adoption Through
+                            Expert Discourse: A UTAUT-Based
+                            Analysis on LinkedIn
                         </h3>
 
-                        <p>
-                            AI discourse, expert perspectives,
-                            and emerging themes in professional
-                            social media environments.
+                        <p class="publication-authors">
+                            Ali Yari, Mohammad Taghi Taghavifard,
+                            Iman Raeesi Vanani
                         </p>
 
+                        <p class="publication-venue">
+                            PLOS ONE · 2026 · Journal Article
+                        </p>
+
+                        <a
+                            class="publication-link"
+                            href="https://doi.org/10.1371/journal.pone.0344013"
+                            target="_blank"
+                            rel="noopener noreferrer">
+
+                            DOI ↗
+
+                        </a>
+
                     </div>
 
-                    <div class="publication-arrow">
-                        →
-                    </div>
+                    <span class="publication-tag">
+                        Published
+                    </span>
 
-                </div>
+                </article>
 
 
-                <div class="publication reveal">
 
-                    <div class="publication-year">
-                        2026
+                <article class="publication">
+
+                    <div class="publication-number">
+                        [02]
                     </div>
 
                     <div>
 
-                        <h3>
-                            AI Co-Agency and Organizational Transformation
+                        <h3 class="publication-title">
+                            Temporal Sentiment Analysis of the
+                            Generative AI Discourse on LinkedIn
                         </h3>
 
-                        <p>
-                            Exploring organizational transformation
-                            when generative AI becomes an active
-                            participant in organizational work.
+                        <p class="publication-authors">
+                            Ali Yari, Mohammad Taghi Taghavifard,
+                            Iman Raeesi Vanani
+                        </p>
+
+                        <p class="publication-venue">
+                            2026 · Journal Article · Under Review
                         </p>
 
                     </div>
 
-                    <div class="publication-arrow">
-                        →
-                    </div>
+                    <span class="publication-tag">
+                        Under Review
+                    </span>
 
-                </div>
+                </article>
 
 
-                <div class="publication reveal">
 
-                    <div class="publication-year">
-                        Ongoing
+                <article class="publication">
+
+                    <div class="publication-number">
+                        [03]
                     </div>
 
                     <div>
 
-                        <h3>
-                            Multi-Agent LLMs for Organizational Decision-Making
+                        <h3 class="publication-title">
+                            Organizational Transformation through
+                            Generative AI: Reframing Technology
+                            Adoption as AI Co-Agency
                         </h3>
 
-                        <p>
-                            Investigating coordination, evidence use,
-                            reproducibility, and decision quality
-                            in organizational multi-agent AI systems.
+                        <p class="publication-authors">
+                            Ali Yari
+                        </p>
+
+                        <p class="publication-venue">
+                            2026 · Journal Article · Under Review
                         </p>
 
                     </div>
 
-                    <div class="publication-arrow">
-                        →
+                    <span class="publication-tag">
+                        Under Review
+                    </span>
+
+                </article>
+
+
+
+                <article class="publication">
+
+                    <div class="publication-number">
+                        [04]
                     </div>
 
-                </div>
+                    <div>
+
+                        <h3 class="publication-title">
+                            Systematic Review of Artificial
+                            Intelligence Approaches in Database
+                            Management Systems
+                        </h3>
+
+                        <p class="publication-authors">
+                            Ali Yari
+                        </p>
+
+                        <p class="publication-venue">
+                            International Congress on Science,
+                            Engineering & New Technologies · 2024
+                        </p>
+
+                    </div>
+
+                    <span class="publication-tag">
+                        Conference
+                    </span>
+
+                </article>
+
+
+
+                <article class="publication">
+
+                    <div class="publication-number">
+                        [05]
+                    </div>
+
+                    <div>
+
+                        <h3 class="publication-title">
+                            A Pattern for the Analysis of Advanced
+                            Technologies Experts’ Perspectives
+                            Toward Artificial Intelligence in LinkedIn
+                        </h3>
+
+                        <p class="publication-authors">
+                            Ali Yari
+                        </p>
+
+                        <p class="publication-venue">
+                            Master's Thesis · 2025
+                        </p>
+
+                    </div>
+
+                    <span class="publication-tag">
+                        Thesis
+                    </span>
+
+                </article>
 
 
             </div>
@@ -1642,66 +1679,195 @@
     </section>
 
 
-    <!-- =========================================================
-         EDUCATION
-    ========================================================= -->
 
-    <section id="education">
+    <!-- =====================================================
+         EXPERIENCE + EDUCATION
+    ====================================================== -->
+
+    <section id="experience">
 
         <div class="container">
 
-            <div class="section-header reveal">
+            <div class="section-header">
 
                 <div class="section-number">
-                    04 / Education
+                    04 — Background
                 </div>
 
                 <h2 class="section-title">
-                    Academic background
+                    Academic background & research experience.
                 </h2>
 
             </div>
 
 
-            <div class="education-list">
+            <div class="two-column">
 
 
-                <div class="education-item reveal">
+                <!-- EXPERIENCE -->
 
-                    <div class="education-year">
-                        2024 — Present
-                    </div>
+                <div>
 
-                    <div>
+                    <h3 class="subsection-title">
+                        Experience
+                    </h3>
 
-                        <h3>
-                            M.Sc. in IT Management
-                        </h3>
+                    <div class="timeline">
 
-                        <p>
-                            Allameh Tabataba'i University
-                        </p>
+
+                        <div class="timeline-item">
+
+                            <div class="timeline-date">
+                                2025 — Present
+                            </div>
+
+                            <div>
+
+                                <h3 class="timeline-title">
+                                    Researcher
+                                </h3>
+
+                                <p class="timeline-place">
+                                    STIMAnalytics
+                                </p>
+
+                                <p class="timeline-description">
+                                    AI-driven patent analysis and
+                                    market research reports.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="timeline-item">
+
+                            <div class="timeline-date">
+                                2024 — Present
+                            </div>
+
+                            <div>
+
+                                <h3 class="timeline-title">
+                                    Researcher
+                                </h3>
+
+                                <p class="timeline-place">
+                                    AI in Business Research Center ·
+                                    Allameh Tabataba’i University
+                                </p>
+
+                                <p class="timeline-description">
+                                    Research activities focused on
+                                    Artificial Intelligence, business,
+                                    information systems, and
+                                    technology-enabled transformation.
+                                </p>
+
+                            </div>
+
+                        </div>
+
 
                     </div>
 
                 </div>
 
 
-                <div class="education-item reveal">
 
-                    <div class="education-year">
-                        Previous
-                    </div>
+                <!-- EDUCATION -->
 
-                    <div>
+                <div>
 
-                        <h3>
-                            B.Sc. in Biology
-                        </h3>
+                    <h3 class="subsection-title">
+                        Education
+                    </h3>
 
-                        <p>
-                            University of Isfahan
-                        </p>
+                    <div class="timeline">
+
+
+                        <div class="timeline-item">
+
+                            <div class="timeline-date">
+                                2023 — 2025
+                            </div>
+
+                            <div>
+
+                                <h3 class="timeline-title">
+                                    M.Sc. Information Technology Management
+                                </h3>
+
+                                <p class="timeline-place">
+                                    Advanced Information Systems ·
+                                    Allameh Tabataba’i University
+                                </p>
+
+                                <p class="timeline-description">
+                                    Thesis: A Pattern for the Analysis
+                                    of Advanced Technologies Experts’
+                                    Perspectives Toward Artificial
+                                    Intelligence in LinkedIn.
+                                    GPA: 18.35 / 20.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="timeline-item">
+
+                            <div class="timeline-date">
+                                2019 — 2023
+                            </div>
+
+                            <div>
+
+                                <h3 class="timeline-title">
+                                    B.Sc. Biology
+                                </h3>
+
+                                <p class="timeline-place">
+                                    University of Isfahan
+                                </p>
+
+                                <p class="timeline-description">
+                                    GPA: 16.41 / 20.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="timeline-item">
+
+                            <div class="timeline-date">
+                                2013 — 2019
+                            </div>
+
+                            <div>
+
+                                <h3 class="timeline-title">
+                                    Diploma in Experimental Sciences
+                                </h3>
+
+                                <p class="timeline-place">
+                                    National Organization for Development
+                                    of Exceptional Talents (Sampad),
+                                    Isfahan
+                                </p>
+
+                                <p class="timeline-description">
+                                    GPA: 17.88 / 20.
+                                </p>
+
+                            </div>
+
+                        </div>
+
 
                     </div>
 
@@ -1715,61 +1881,462 @@
     </section>
 
 
-    <!-- =========================================================
-         CONTACT
-    ========================================================= -->
 
-    <section id="contact" class="contact">
+    <!-- =====================================================
+         PROJECTS
+    ====================================================== -->
+
+    <section id="projects">
 
         <div class="container">
 
-            <div class="contact-inner reveal">
+            <div class="section-header">
 
                 <div class="section-number">
-                    05 / Contact
+                    05 — Projects
+                </div>
+
+                <h2 class="section-title">
+                    Selected research & applied projects.
+                </h2>
+
+            </div>
+
+
+            <div class="project-list">
+
+
+                <article class="project">
+
+                    <div class="project-number">
+                        01
+                    </div>
+
+                    <div>
+
+                        <h3>
+                            Tech-Driven Medicinal Plant Business
+                        </h3>
+
+                        <p>
+                            Technology-driven business planning
+                            integrating blockchain, IoT, AI-based
+                            predictive analytics, and sustainable
+                            practices.
+                        </p>
+
+                    </div>
+
+                </article>
+
+
+                <article class="project">
+
+                    <div class="project-number">
+                        02
+                    </div>
+
+                    <div>
+
+                        <h3>
+                            Business Intelligence for Sales Data
+                        </h3>
+
+                        <p>
+                            Power BI-based sales data modeling,
+                            transformation, visualization, and
+                            interactive business intelligence
+                            reporting.
+                        </p>
+
+                    </div>
+
+                </article>
+
+
+                <article class="project">
+
+                    <div class="project-number">
+                        03
+                    </div>
+
+                    <div>
+
+                        <h3>
+                            Data Reporting and Analysis Using QlikView
+                        </h3>
+
+                        <p>
+                            Sales data analysis, KPI reporting,
+                            data integration, cleaning, and
+                            interactive dashboard development.
+                        </p>
+
+                    </div>
+
+                </article>
+
+
+                <article class="project">
+
+                    <div class="project-number">
+                        04
+                    </div>
+
+                    <div>
+
+                        <h3>
+                            System Design and Analysis
+                        </h3>
+
+                        <p>
+                            Enterprise architecture-based
+                            organizational system design and
+                            analysis using ICONIX, use case
+                            diagrams, and ERDs.
+                        </p>
+
+                    </div>
+
+                </article>
+
+
+                <article class="project">
+
+                    <div class="project-number">
+                        05
+                    </div>
+
+                    <div>
+
+                        <h3>
+                            BPM for Untitled Land
+                        </h3>
+
+                        <p>
+                            As-is/to-be business process analysis
+                            and redesign for land document issuance
+                            using Visual Paradigm.
+                        </p>
+
+                    </div>
+
+                </article>
+
+
+                <article class="project">
+
+                    <div class="project-number">
+                        06
+                    </div>
+
+                    <div>
+
+                        <h3>
+                            Knowledge Management Maturity Assessment
+                        </h3>
+
+                        <p>
+                            Organizational knowledge management
+                            maturity assessment based on the
+                            APO framework.
+                        </p>
+
+                    </div>
+
+                </article>
+
+
+                <article class="project">
+
+                    <div class="project-number">
+                        07
+                    </div>
+
+                    <div>
+
+                        <h3>
+                            Strategic Analysis and Planning
+                        </h3>
+
+                        <p>
+                            Comprehensive strategic planning for
+                            a software business using SWOT, PESTEL,
+                            BCG Matrix, Balanced Scorecard, CSFs,
+                            and KPIs.
+                        </p>
+
+                    </div>
+
+                </article>
+
+
+                <article class="project">
+
+                    <div class="project-number">
+                        08
+                    </div>
+
+                    <div>
+
+                        <h3>
+                            Exploring Data Science and Machine Learning
+                        </h3>
+
+                        <p>
+                            Scientific review and practical
+                            comparison of Data Science, Machine
+                            Learning, Neural Networks, Deep Learning,
+                            and Transformer-based models.
+                        </p>
+
+                    </div>
+
+                </article>
+
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         ADDITIONAL INFORMATION
+    ====================================================== -->
+
+    <section>
+
+        <div class="container">
+
+            <div class="two-column">
+
+
+                <!-- INTERESTS -->
+
+                <div>
+
+                    <h3 class="subsection-title">
+                        Research Interests
+                    </h3>
+
+                    <div class="interest-grid">
+
+                        <span class="interest">
+                            Agentic AI
+                        </span>
+
+                        <span class="interest">
+                            Human–AI Collaboration
+                        </span>
+
+                        <span class="interest">
+                            AI-enabled Decision Making
+                        </span>
+
+                        <span class="interest">
+                            Generative AI
+                        </span>
+
+                        <span class="interest">
+                            Information Systems
+                        </span>
+
+                        <span class="interest">
+                            Natural Language Processing
+                        </span>
+
+                        <span class="interest">
+                            Applied AI
+                        </span>
+
+                        <span class="interest">
+                            Social Media Analytics
+                        </span>
+
+                    </div>
+
                 </div>
 
 
-                <h2 class="contact-title">
 
-                    Let's build
-                    <span>
-                        what's next.
-                    </span>
+                <!-- AWARDS -->
 
-                </h2>
+                <div>
+
+                    <h3 class="subsection-title">
+                        Awards & Certifications
+                    </h3>
+
+                    <div class="simple-list">
+
+                        <div class="simple-item">
+
+                            <strong>
+                                National Elites Foundation
+                            </strong>
+
+                            Awardee of the National Elites
+                            Foundation (Iran), 2025.
+
+                        </div>
 
 
-                <p class="contact-description">
+                        <div class="simple-item">
 
-                    I am interested in research collaborations,
-                    doctoral opportunities, and conversations around
-                    AI, information systems, and organizations.
+                            <strong>
+                                Top-ranked Undergraduate Student
+                            </strong>
 
-                </p>
+                            B.Sc. Student Ranking —
+                            University of Isfahan, 2023.
+
+                        </div>
 
 
-                <div class="social-links">
+                        <div class="simple-item">
 
-                    <a href="#">
-                        Email
+                            <strong>
+                                Machine Learning Course
+                            </strong>
+
+                            Sharif University of Technology —
+                            Dr. Ali Sharifi-Zarchi, 2024.
+
+                        </div>
+
+
+                        <div class="simple-item">
+
+                            <strong>
+                                Complete RAG Bootcamp
+                            </strong>
+
+                            Data Science Academy / School of AI —
+                            Udemy.
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         CONTACT
+    ====================================================== -->
+
+    <section id="contact" class="contact-section">
+
+        <div class="container">
+
+            <div class="contact-grid">
+
+
+                <div>
+
+                    <p class="contact-lead">
+
+                        Interested in research,
+                        collaboration, or
+                        <span>PhD opportunities?</span>
+
+                    </p>
+
+                </div>
+
+
+                <div class="contact-links">
+
+
+                    <a
+                        class="contact-link"
+                        href="mailto:aliyari3114@gmail.com">
+
+                        <span>
+                            Email
+                        </span>
+
+                        <span class="contact-arrow">
+                            ↗
+                        </span>
+
                     </a>
 
-                    <a href="#">
-                        Google Scholar
+
+                    <a
+                        class="contact-link"
+                        href="https://www.linkedin.com/in/ali-yari-2426a4219/"
+                        target="_blank"
+                        rel="noopener noreferrer">
+
+                        <span>
+                            LinkedIn
+                        </span>
+
+                        <span class="contact-arrow">
+                            ↗
+                        </span>
+
                     </a>
 
-                    <a href="#">
-                        LinkedIn
+
+                    <a
+                        class="contact-link"
+                        href="https://github.com/Ali-Yari"
+                        target="_blank"
+                        rel="noopener noreferrer">
+
+                        <span>
+                            GitHub
+                        </span>
+
+                        <span class="contact-arrow">
+                            ↗
+                        </span>
+
                     </a>
 
-                    <a href="https://github.com/Ali-Yari">
-                        GitHub
+
+                    <a
+                        class="contact-link"
+                        href="#">
+
+                        <span>
+                            Google Scholar
+                        </span>
+
+                        <span class="contact-arrow">
+                            ↗
+                        </span>
+
                     </a>
 
-                    <a href="#">
-                        CV
+
+                    <a
+                        class="contact-link"
+                        href="#">
+
+                        <span>
+                            Curriculum Vitae
+                        </span>
+
+                        <span class="contact-arrow">
+                            ↗
+                        </span>
+
                     </a>
+
 
                 </div>
 
@@ -1779,87 +2346,33 @@
 
     </section>
 
+</main>
 
-    <!-- =========================================================
-         FOOTER
-    ========================================================= -->
 
-    <footer>
 
-        <div class="container">
+<!-- =========================================================
+     FOOTER
+========================================================= -->
 
-            <div class="footer-inner">
+<footer>
 
-                <div>
-                    © 2026 Ali Yari
-                </div>
+    <div class="container">
 
-                <div>
-                    AI · Information Systems · Organizations
-                </div>
+        <div class="footer-inner">
 
-            </div>
+            <span class="footer-name">
+                © 2026 Ali Yari
+            </span>
+
+            <span>
+                AI · Information Systems · Organizations
+            </span>
 
         </div>
 
-    </footer>
+    </div>
 
-
-    <!-- =========================================================
-         SCROLL ANIMATION
-    ========================================================= -->
-
-    <script>
-
-        const revealElements =
-            document.querySelectorAll(".reveal");
-
-
-        const observer =
-            new IntersectionObserver(
-
-                (entries) => {
-
-                    entries.forEach(
-                        (entry) => {
-
-                            if (
-                                entry.isIntersecting
-                            ) {
-
-                                entry.target.classList.add(
-                                    "visible"
-                                );
-
-                                observer.unobserve(
-                                    entry.target
-                                );
-
-                            }
-
-                        }
-                    );
-
-                },
-
-                {
-                    threshold: 0.12
-                }
-
-            );
-
-
-        revealElements.forEach(
-            (element) => {
-
-                observer.observe(
-                    element
-                );
-
-            }
-        );
-
-    </script>
+</footer>
 
 
 </body>
